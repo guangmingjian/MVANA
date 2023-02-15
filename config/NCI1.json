@@ -1,0 +1,1 @@
+{"MFeatype": "MFM", "alpha": 0.2, "batch_size": 256, "beta": 0.0001, "dropout": 0.1, "gcn_nums": 3, "lr": 0.0005, "mask_rate": 0.2}

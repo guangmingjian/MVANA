@@ -1,0 +1,1 @@
+{"alpha": 0.2, "beta": 0.0001, "gcn_nums": 3, "dropout": 0.1, "d_kv": 32, "gcn_dropout": 0.0, "att_drop_ratio": 0.0, "mask_rate": 0.2, "graph_norm": true, "sz_c": 4, "gcn_h_dim": 128, "g_name": "GraphSAGE", "cnn_out_ker": 18, "hidden_kernel": 16, "cnn_dropout": 0.0, "is_cbn": false, "is_em": false, "MFeatype": "MFM", "in_channels": 37, "out_channels": 2, "device": "cuda:1"}

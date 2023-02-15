@@ -1,0 +1,1969 @@
+Dataset: REDDIT-MULTI-12K,
+Model Name: SANA
+net_params={'alpha': 0.7, 'beta': 0.1, 'gcn_nums': 3, 'dropout': 0.4, 'd_kv': 32, 'gcn_dropout': 0.0, 'att_drop_ratio': 0.0, 'mask_rate': 0.4, 'graph_norm': True, 'sz_c': 4, 'gcn_h_dim': 128, 'g_name': 'GraphSAGE', 'cnn_out_ker': 18, 'hidden_kernel': 16, 'cnn_dropout': 0.0, 'is_cbn': False, 'is_em': False, 'MFeatype': 'MFM', 'in_channels': 1, 'out_channels': 11, 'device': 'cuda:2'}
+train_config={'kf': 10, 'epochs': 300, 'batch_size': 256, 'seed': 8971, 'patience': 50, 'lr': 0.005, 'weight_decay': 1e-05}
+SANA(
+  (mgl): MultiGCNLayers(
+    (gcn_layer): ModuleList(
+      (0): ModuleList(
+        (0): SAGEConv(1, 32)
+        (1): Dropout(p=0.0, inplace=False)
+        (2): GraphSizeNorm()
+        (3): BatchNorm(32)
+        (4): ReLU()
+        (5): SAGEConv(32, 32)
+        (6): Dropout(p=0.0, inplace=False)
+        (7): GraphSizeNorm()
+        (8): BatchNorm(32)
+        (9): ReLU()
+        (10): SAGEConv(32, 32)
+        (11): Dropout(p=0.0, inplace=False)
+        (12): GraphSizeNorm()
+        (13): BatchNorm(32)
+        (14): ReLU()
+      )
+      (1): ModuleList(
+        (0): SAGEConv(1, 32)
+        (1): Dropout(p=0.0, inplace=False)
+        (2): GraphSizeNorm()
+        (3): BatchNorm(32)
+        (4): ReLU()
+        (5): SAGEConv(32, 32)
+        (6): Dropout(p=0.0, inplace=False)
+        (7): GraphSizeNorm()
+        (8): BatchNorm(32)
+        (9): ReLU()
+        (10): SAGEConv(32, 32)
+        (11): Dropout(p=0.0, inplace=False)
+        (12): GraphSizeNorm()
+        (13): BatchNorm(32)
+        (14): ReLU()
+      )
+      (2): ModuleList(
+        (0): SAGEConv(1, 32)
+        (1): Dropout(p=0.0, inplace=False)
+        (2): GraphSizeNorm()
+        (3): BatchNorm(32)
+        (4): ReLU()
+        (5): SAGEConv(32, 32)
+        (6): Dropout(p=0.0, inplace=False)
+        (7): GraphSizeNorm()
+        (8): BatchNorm(32)
+        (9): ReLU()
+        (10): SAGEConv(32, 32)
+        (11): Dropout(p=0.0, inplace=False)
+        (12): GraphSizeNorm()
+        (13): BatchNorm(32)
+        (14): ReLU()
+      )
+      (3): ModuleList(
+        (0): SAGEConv(1, 32)
+        (1): Dropout(p=0.0, inplace=False)
+        (2): GraphSizeNorm()
+        (3): BatchNorm(32)
+        (4): ReLU()
+        (5): SAGEConv(32, 32)
+        (6): Dropout(p=0.0, inplace=False)
+        (7): GraphSizeNorm()
+        (8): BatchNorm(32)
+        (9): ReLU()
+        (10): SAGEConv(32, 32)
+        (11): Dropout(p=0.0, inplace=False)
+        (12): GraphSizeNorm()
+        (13): BatchNorm(32)
+        (14): ReLU()
+      )
+    )
+    (layer_norm): LayerNorm((32,), eps=1e-06, elementwise_affine=True)
+  )
+  (smus): ModuleList(
+    (0): Attv2(
+      (trans_lin): ModuleList(
+        (0): Linear(in_features=64, out_features=32, bias=True)
+        (1): Linear(in_features=32, out_features=32, bias=True)
+      )
+      (att_lin): Linear(in_features=64, out_features=1, bias=True)
+      (dropout): Dropout(p=0.0, inplace=False)
+      (layer_norm): LayerNorm((32,), eps=1e-06, elementwise_affine=True)
+    )
+    (1): Attv2(
+      (trans_lin): ModuleList(
+        (0): Linear(in_features=64, out_features=32, bias=True)
+        (1): Linear(in_features=32, out_features=32, bias=True)
+      )
+      (att_lin): Linear(in_features=64, out_features=1, bias=True)
+      (dropout): Dropout(p=0.0, inplace=False)
+      (layer_norm): LayerNorm((32,), eps=1e-06, elementwise_affine=True)
+    )
+    (2): Attv2(
+      (trans_lin): ModuleList(
+        (0): Linear(in_features=64, out_features=32, bias=True)
+        (1): Linear(in_features=32, out_features=32, bias=True)
+      )
+      (att_lin): Linear(in_features=64, out_features=1, bias=True)
+      (dropout): Dropout(p=0.0, inplace=False)
+      (layer_norm): LayerNorm((32,), eps=1e-06, elementwise_affine=True)
+    )
+    (3): Attv2(
+      (trans_lin): ModuleList(
+        (0): Linear(in_features=64, out_features=32, bias=True)
+        (1): Linear(in_features=32, out_features=32, bias=True)
+      )
+      (att_lin): Linear(in_features=64, out_features=1, bias=True)
+      (dropout): Dropout(p=0.0, inplace=False)
+      (layer_norm): LayerNorm((32,), eps=1e-06, elementwise_affine=True)
+    )
+  )
+  (vlr): VLRLayers(
+    (k_fc): Linear(in_features=32, out_features=32, bias=True)
+    (v_fc): Linear(in_features=32, out_features=32, bias=True)
+    (dropout): Dropout(p=0.0, inplace=False)
+    (layer_norm): LayerNorm((32,), eps=1e-06, elementwise_affine=True)
+  )
+  (cnn_net): LeNet(
+    (conv1): Conv2d(4, 16, kernel_size=(5, 5), stride=(1, 1))
+    (conv2): Conv2d(16, 18, kernel_size=(5, 5), stride=(1, 1))
+    (dropout): Dropout(p=0.0, inplace=False)
+  )
+  (dropout): Dropout(p=0.30000000000000004, inplace=False)
+  (fc1): Linear(in_features=450, out_features=32, bias=True)
+  (fc2): Linear(in_features=32, out_features=11, bias=True)
+)
+
+fold [0/10] is start!!
+[01/0001] | train_loss:2.2339 val_acc:22.0638 val_loss:2.2271
+model is saved at epoch 1!![01/0002] | train_loss:2.0714 val_acc:27.6007 val_loss:1.9774
+model is saved at epoch 2!![01/0003] | train_loss:1.9927 val_acc:30.7047 val_loss:1.8853
+model is saved at epoch 3!![01/0004] | train_loss:1.9559 val_acc:30.5369 val_loss:1.8812
+[01/0005] | train_loss:1.9274 val_acc:30.453 val_loss:1.8417
+[01/0006] | train_loss:1.9016 val_acc:31.1242 val_loss:1.8146
+model is saved at epoch 6!![01/0007] | train_loss:1.8772 val_acc:32.9698 val_loss:1.807
+model is saved at epoch 7!![01/0008] | train_loss:1.8535 val_acc:34.1443 val_loss:1.7805
+model is saved at epoch 8!![01/0009] | train_loss:1.8313 val_acc:31.7953 val_loss:1.8084
+[01/0010] | train_loss:1.8485 val_acc:35.9899 val_loss:1.7213
+model is saved at epoch 10!![01/0011] | train_loss:1.7966 val_acc:37.6678 val_loss:1.6971
+model is saved at epoch 11!![01/0012] | train_loss:1.78 val_acc:37.9195 val_loss:1.6903
+model is saved at epoch 12!![01/0013] | train_loss:1.8052 val_acc:34.1443 val_loss:1.7386
+[01/0014] | train_loss:1.7592 val_acc:40.1007 val_loss:1.6256
+model is saved at epoch 14!![01/0015] | train_loss:1.7388 val_acc:39.0101 val_loss:1.6325
+[01/0016] | train_loss:1.7195 val_acc:39.849 val_loss:1.6051
+[01/0017] | train_loss:1.7277 val_acc:41.0235 val_loss:1.5795
+model is saved at epoch 17!![01/0018] | train_loss:1.6836 val_acc:42.0302 val_loss:1.577
+model is saved at epoch 18!![01/0019] | train_loss:1.6814 val_acc:42.5336 val_loss:1.5748
+model is saved at epoch 19!![01/0020] | train_loss:1.6743 val_acc:41.6107 val_loss:1.5536
+[01/0021] | train_loss:1.6738 val_acc:40.8557 val_loss:1.5554
+[01/0022] | train_loss:1.6394 val_acc:42.5336 val_loss:1.5792
+[01/0023] | train_loss:1.6272 val_acc:44.2953 val_loss:1.5136
+model is saved at epoch 23!![01/0024] | train_loss:1.618 val_acc:42.0302 val_loss:1.5751
+[01/0025] | train_loss:1.6142 val_acc:44.2114 val_loss:1.5146
+[01/0026] | train_loss:1.6164 val_acc:41.6107 val_loss:1.5449
+[01/0027] | train_loss:1.6132 val_acc:42.8691 val_loss:1.5339
+[01/0028] | train_loss:1.6099 val_acc:44.2114 val_loss:1.5182
+[01/0029] | train_loss:1.5894 val_acc:44.6309 val_loss:1.5283
+model is saved at epoch 29!![01/0030] | train_loss:1.5989 val_acc:43.4564 val_loss:1.5053
+[01/0031] | train_loss:1.5913 val_acc:42.3658 val_loss:1.5131
+[01/0032] | train_loss:1.5884 val_acc:44.547 val_loss:1.5203
+[01/0033] | train_loss:1.5696 val_acc:45.302 val_loss:1.5102
+model is saved at epoch 33!![01/0034] | train_loss:1.5787 val_acc:44.4631 val_loss:1.509
+[01/0035] | train_loss:1.5746 val_acc:43.3725 val_loss:1.4943
+[01/0036] | train_loss:1.5822 val_acc:44.0436 val_loss:1.4993
+[01/0037] | train_loss:1.5691 val_acc:44.7987 val_loss:1.488
+[01/0038] | train_loss:1.5599 val_acc:46.1409 val_loss:1.4797
+model is saved at epoch 38!![01/0039] | train_loss:1.564 val_acc:45.0503 val_loss:1.4935
+[01/0040] | train_loss:1.5607 val_acc:43.5403 val_loss:1.4838
+[01/0041] | train_loss:1.5559 val_acc:44.4631 val_loss:1.5002
+[01/0042] | train_loss:1.5486 val_acc:46.057 val_loss:1.4684
+[01/0043] | train_loss:1.5466 val_acc:44.7987 val_loss:1.488
+[01/0044] | train_loss:1.5566 val_acc:45.5537 val_loss:1.5007
+[01/0045] | train_loss:1.5424 val_acc:44.6309 val_loss:1.4929
+[01/0046] | train_loss:1.552 val_acc:44.4631 val_loss:1.4943
+[01/0047] | train_loss:1.5619 val_acc:45.2181 val_loss:1.4743
+[01/0048] | train_loss:1.5524 val_acc:45.1342 val_loss:1.4897
+[01/0049] | train_loss:1.5479 val_acc:45.9732 val_loss:1.4868
+[01/0050] | train_loss:1.5413 val_acc:46.4765 val_loss:1.473
+model is saved at epoch 50!![01/0051] | train_loss:1.5402 val_acc:45.2181 val_loss:1.4749
+[01/0052] | train_loss:1.5377 val_acc:43.8758 val_loss:1.5023
+[01/0053] | train_loss:1.5525 val_acc:44.547 val_loss:1.4771
+[01/0054] | train_loss:1.5393 val_acc:44.6309 val_loss:1.4879
+[01/0055] | train_loss:1.5368 val_acc:45.7215 val_loss:1.4641
+[01/0056] | train_loss:1.5325 val_acc:44.7987 val_loss:1.4738
+[01/0057] | train_loss:1.5273 val_acc:44.2953 val_loss:1.4771
+[01/0058] | train_loss:1.5182 val_acc:45.6376 val_loss:1.469
+[01/0059] | train_loss:1.5316 val_acc:43.3725 val_loss:1.508
+[01/0060] | train_loss:1.5277 val_acc:44.8826 val_loss:1.4692
+[01/0061] | train_loss:1.5235 val_acc:46.057 val_loss:1.4965
+[01/0062] | train_loss:1.5286 val_acc:44.6309 val_loss:1.4734
+[01/0063] | train_loss:1.5304 val_acc:45.5537 val_loss:1.47
+[01/0064] | train_loss:1.5113 val_acc:45.6376 val_loss:1.4627
+[01/0065] | train_loss:1.5053 val_acc:46.6443 val_loss:1.455
+model is saved at epoch 65!![01/0066] | train_loss:1.5268 val_acc:45.2181 val_loss:1.4787
+[01/0067] | train_loss:1.5264 val_acc:45.3859 val_loss:1.4913
+[01/0068] | train_loss:1.5224 val_acc:43.6242 val_loss:1.5121
+[01/0069] | train_loss:1.5115 val_acc:46.9799 val_loss:1.4565
+model is saved at epoch 69!![01/0070] | train_loss:1.5069 val_acc:46.896 val_loss:1.468
+[01/0071] | train_loss:1.5213 val_acc:46.4765 val_loss:1.4501
+[01/0072] | train_loss:1.5077 val_acc:45.9732 val_loss:1.4595
+[01/0073] | train_loss:1.4966 val_acc:45.8893 val_loss:1.4902
+[01/0074] | train_loss:1.5169 val_acc:45.302 val_loss:1.4813
+[01/0075] | train_loss:1.5132 val_acc:45.1342 val_loss:1.4739
+[01/0076] | train_loss:1.5164 val_acc:46.6443 val_loss:1.4603
+[01/0077] | train_loss:1.511 val_acc:46.9799 val_loss:1.4499
+[01/0078] | train_loss:1.5021 val_acc:44.8826 val_loss:1.4762
+[01/0079] | train_loss:1.5151 val_acc:46.057 val_loss:1.4577
+[01/0080] | train_loss:1.5125 val_acc:45.2181 val_loss:1.4998
+[01/0081] | train_loss:1.5145 val_acc:45.8893 val_loss:1.4693
+[01/0082] | train_loss:1.489 val_acc:46.1409 val_loss:1.4858
+[01/0083] | train_loss:1.4964 val_acc:46.1409 val_loss:1.4542
+[01/0084] | train_loss:1.5005 val_acc:45.8893 val_loss:1.4484
+[01/0085] | train_loss:1.5076 val_acc:46.3926 val_loss:1.4489
+[01/0086] | train_loss:1.4962 val_acc:46.5604 val_loss:1.4696
+[01/0087] | train_loss:1.5122 val_acc:46.5604 val_loss:1.4488
+[01/0088] | train_loss:1.4944 val_acc:45.6376 val_loss:1.4774
+[01/0089] | train_loss:1.4954 val_acc:44.6309 val_loss:1.4804
+[01/0090] | train_loss:1.5025 val_acc:45.4698 val_loss:1.4792
+[01/0091] | train_loss:1.4928 val_acc:45.1342 val_loss:1.4843
+[01/0092] | train_loss:1.4902 val_acc:46.4765 val_loss:1.4847
+[01/0093] | train_loss:1.4962 val_acc:45.8054 val_loss:1.4509
+[01/0094] | train_loss:1.4967 val_acc:45.8054 val_loss:1.4956
+[01/0095] | train_loss:1.494 val_acc:46.057 val_loss:1.4661
+[01/0096] | train_loss:1.4833 val_acc:45.3859 val_loss:1.4945
+[01/0097] | train_loss:1.5015 val_acc:45.7215 val_loss:1.4698
+[01/0098] | train_loss:1.4945 val_acc:46.1409 val_loss:1.4513
+[01/0099] | train_loss:1.4787 val_acc:47.1476 val_loss:1.4726
+model is saved at epoch 99!![01/0100] | train_loss:1.4859 val_acc:45.302 val_loss:1.4625
+[01/0101] | train_loss:1.474 val_acc:45.2181 val_loss:1.4631
+[01/0102] | train_loss:1.4755 val_acc:46.5604 val_loss:1.4678
+[01/0103] | train_loss:1.4832 val_acc:46.2248 val_loss:1.4548
+[01/0104] | train_loss:1.4834 val_acc:45.4698 val_loss:1.4654
+[01/0105] | train_loss:1.4845 val_acc:45.8893 val_loss:1.4711
+[01/0106] | train_loss:1.4867 val_acc:46.9799 val_loss:1.4712
+[01/0107] | train_loss:1.4955 val_acc:45.5537 val_loss:1.4795
+[01/0108] | train_loss:1.4863 val_acc:46.2248 val_loss:1.4545
+[01/0109] | train_loss:1.4814 val_acc:45.8893 val_loss:1.471
+[01/0110] | train_loss:1.4819 val_acc:45.3859 val_loss:1.4725
+[01/0111] | train_loss:1.49 val_acc:46.7282 val_loss:1.4587
+[01/0112] | train_loss:1.4735 val_acc:47.0638 val_loss:1.4329
+[01/0113] | train_loss:1.4785 val_acc:45.8893 val_loss:1.4507
+[01/0114] | train_loss:1.4864 val_acc:46.4765 val_loss:1.4469
+[01/0115] | train_loss:1.4847 val_acc:44.2114 val_loss:1.4595
+[01/0116] | train_loss:1.482 val_acc:46.1409 val_loss:1.4635
+[01/0117] | train_loss:1.4762 val_acc:44.7148 val_loss:1.4838
+[01/0118] | train_loss:1.4714 val_acc:45.0503 val_loss:1.4771
+[01/0119] | train_loss:1.469 val_acc:45.8054 val_loss:1.4792
+[01/0120] | train_loss:1.5009 val_acc:46.057 val_loss:1.4535
+[01/0121] | train_loss:1.4703 val_acc:45.4698 val_loss:1.4495
+[01/0122] | train_loss:1.4624 val_acc:45.9732 val_loss:1.4401
+[01/0123] | train_loss:1.4791 val_acc:45.7215 val_loss:1.4389
+[01/0124] | train_loss:1.4711 val_acc:45.9732 val_loss:1.4706
+[01/0125] | train_loss:1.4667 val_acc:47.5671 val_loss:1.4339
+model is saved at epoch 125!![01/0126] | train_loss:1.4611 val_acc:46.5604 val_loss:1.4462
+[01/0127] | train_loss:1.4837 val_acc:46.2248 val_loss:1.4829
+[01/0128] | train_loss:1.4716 val_acc:46.896 val_loss:1.4485
+[01/0129] | train_loss:1.4663 val_acc:46.6443 val_loss:1.4369
+[01/0130] | train_loss:1.4608 val_acc:46.2248 val_loss:1.4673
+[01/0131] | train_loss:1.4701 val_acc:45.8054 val_loss:1.47
+[01/0132] | train_loss:1.463 val_acc:46.057 val_loss:1.4435
+[01/0133] | train_loss:1.4672 val_acc:46.3087 val_loss:1.4522
+[01/0134] | train_loss:1.465 val_acc:46.6443 val_loss:1.4507
+[01/0135] | train_loss:1.4651 val_acc:47.7349 val_loss:1.4381
+model is saved at epoch 135!![01/0136] | train_loss:1.4691 val_acc:46.3926 val_loss:1.4454
+[01/0137] | train_loss:1.466 val_acc:46.1409 val_loss:1.4594
+[01/0138] | train_loss:1.4759 val_acc:47.1476 val_loss:1.4398
+[01/0139] | train_loss:1.4607 val_acc:45.5537 val_loss:1.4536
+[01/0140] | train_loss:1.4583 val_acc:45.1342 val_loss:1.4852
+[01/0141] | train_loss:1.4616 val_acc:45.4698 val_loss:1.4519
+[01/0142] | train_loss:1.4595 val_acc:45.0503 val_loss:1.4811
+[01/0143] | train_loss:1.4619 val_acc:44.7987 val_loss:1.4742
+[01/0144] | train_loss:1.4632 val_acc:45.6376 val_loss:1.4763
+[01/0145] | train_loss:1.4665 val_acc:46.8121 val_loss:1.429
+[01/0146] | train_loss:1.4562 val_acc:45.1342 val_loss:1.4571
+[01/0147] | train_loss:1.4611 val_acc:45.9732 val_loss:1.4474
+[01/0148] | train_loss:1.4496 val_acc:44.4631 val_loss:1.4506
+[01/0149] | train_loss:1.4693 val_acc:45.0503 val_loss:1.4627
+[01/0150] | train_loss:1.458 val_acc:45.4698 val_loss:1.4333
+[01/0151] | train_loss:1.4581 val_acc:45.8054 val_loss:1.4575
+[01/0152] | train_loss:1.4623 val_acc:44.547 val_loss:1.4625
+[01/0153] | train_loss:1.4455 val_acc:46.2248 val_loss:1.4427
+[01/0154] | train_loss:1.4498 val_acc:44.2114 val_loss:1.4453
+[01/0155] | train_loss:1.4606 val_acc:45.8893 val_loss:1.4508
+[01/0156] | train_loss:1.4713 val_acc:46.4765 val_loss:1.4463
+[01/0157] | train_loss:1.4535 val_acc:47.2315 val_loss:1.4298
+[01/0158] | train_loss:1.4497 val_acc:45.9732 val_loss:1.4289
+[01/0159] | train_loss:1.4458 val_acc:46.057 val_loss:1.4655
+[01/0160] | train_loss:1.465 val_acc:46.5604 val_loss:1.4421
+[01/0161] | train_loss:1.4493 val_acc:45.3859 val_loss:1.4493
+[01/0162] | train_loss:1.4611 val_acc:44.7148 val_loss:1.4604
+[01/0163] | train_loss:1.4457 val_acc:45.5537 val_loss:1.4608
+[01/0164] | train_loss:1.4542 val_acc:45.9732 val_loss:1.442
+[01/0165] | train_loss:1.4423 val_acc:46.1409 val_loss:1.4421
+[01/0166] | train_loss:1.4396 val_acc:45.1342 val_loss:1.4517
+[01/0167] | train_loss:1.4579 val_acc:45.2181 val_loss:1.4721
+[01/0168] | train_loss:1.4543 val_acc:45.4698 val_loss:1.4687
+[01/0169] | train_loss:1.4489 val_acc:46.1409 val_loss:1.4506
+[01/0170] | train_loss:1.4573 val_acc:46.896 val_loss:1.4303
+[01/0171] | train_loss:1.4528 val_acc:46.1409 val_loss:1.4356
+[01/0172] | train_loss:1.4412 val_acc:46.057 val_loss:1.443
+[01/0173] | train_loss:1.4421 val_acc:46.3087 val_loss:1.4424
+[01/0174] | train_loss:1.4396 val_acc:44.6309 val_loss:1.4651
+[01/0175] | train_loss:1.4453 val_acc:45.9732 val_loss:1.4621
+[01/0176] | train_loss:1.4437 val_acc:45.3859 val_loss:1.4512
+[01/0177] | train_loss:1.4406 val_acc:44.7987 val_loss:1.4956
+[01/0178] | train_loss:1.4471 val_acc:46.1409 val_loss:1.4409
+[01/0179] | train_loss:1.4372 val_acc:46.1409 val_loss:1.4678
+[01/0180] | train_loss:1.4534 val_acc:46.896 val_loss:1.4547
+[01/0181] | train_loss:1.4473 val_acc:45.1342 val_loss:1.4697
+[01/0182] | train_loss:1.4466 val_acc:46.1409 val_loss:1.4565
+[01/0183] | train_loss:1.4544 val_acc:46.6443 val_loss:1.4552
+[01/0184] | train_loss:1.4379 val_acc:46.1409 val_loss:1.4566
+[01/0185] | train_loss:1.4463 val_acc:45.6376 val_loss:1.4462
+[01/0186] | train_loss:1.4466 val_acc:45.6376 val_loss:1.4708
+Fold: [1/10] Test is finish !! 
+ Test Metrics are: test_acc:50.8801 test_loss:1.3481fold [1/10] is start!!
+[02/0001] | train_loss:2.2476 val_acc:21.7938 val_loss:2.2467
+model is saved at epoch 1!![02/0002] | train_loss:2.0772 val_acc:28.9187 val_loss:1.9586
+model is saved at epoch 2!![02/0003] | train_loss:2.0123 val_acc:32.1878 val_loss:1.8482
+model is saved at epoch 3!![02/0004] | train_loss:1.9658 val_acc:31.1819 val_loss:1.8148
+[02/0005] | train_loss:1.9364 val_acc:30.9304 val_loss:1.8145
+[02/0006] | train_loss:1.9341 val_acc:33.8642 val_loss:1.7851
+model is saved at epoch 6!![02/0007] | train_loss:1.9148 val_acc:35.2054 val_loss:1.7297
+model is saved at epoch 7!![02/0008] | train_loss:1.8719 val_acc:37.6362 val_loss:1.7002
+model is saved at epoch 8!![02/0009] | train_loss:1.8378 val_acc:35.373 val_loss:1.7074
+[02/0010] | train_loss:1.8141 val_acc:38.4744 val_loss:1.6357
+model is saved at epoch 10!![02/0011] | train_loss:1.8043 val_acc:39.3965 val_loss:1.6232
+model is saved at epoch 11!![02/0012] | train_loss:1.7708 val_acc:37.5524 val_loss:1.6206
+[02/0013] | train_loss:1.7654 val_acc:40.57 val_loss:1.5797
+model is saved at epoch 13!![02/0014] | train_loss:1.7276 val_acc:40.2347 val_loss:1.5786
+[02/0015] | train_loss:1.7183 val_acc:43.1685 val_loss:1.5629
+model is saved at epoch 15!![02/0016] | train_loss:1.718 val_acc:42.4141 val_loss:1.5618
+[02/0017] | train_loss:1.7096 val_acc:40.9891 val_loss:1.5437
+[02/0018] | train_loss:1.6843 val_acc:42.4141 val_loss:1.5405
+[02/0019] | train_loss:1.6741 val_acc:41.9111 val_loss:1.5405
+[02/0020] | train_loss:1.6767 val_acc:40.9891 val_loss:1.5451
+[02/0021] | train_loss:1.6606 val_acc:44.5096 val_loss:1.4911
+model is saved at epoch 21!![02/0022] | train_loss:1.6475 val_acc:44.5935 val_loss:1.4884
+model is saved at epoch 22!![02/0023] | train_loss:1.6399 val_acc:44.5096 val_loss:1.5034
+[02/0024] | train_loss:1.6385 val_acc:42.7494 val_loss:1.5207
+[02/0025] | train_loss:1.6372 val_acc:45.0126 val_loss:1.4866
+model is saved at epoch 25!![02/0026] | train_loss:1.6321 val_acc:43.2523 val_loss:1.5172
+[02/0027] | train_loss:1.6226 val_acc:44.9288 val_loss:1.4464
+[02/0028] | train_loss:1.5995 val_acc:44.9288 val_loss:1.4666
+[02/0029] | train_loss:1.615 val_acc:45.0964 val_loss:1.4652
+model is saved at epoch 29!![02/0030] | train_loss:1.6238 val_acc:45.6832 val_loss:1.5001
+model is saved at epoch 30!![02/0031] | train_loss:1.6004 val_acc:47.1081 val_loss:1.4161
+model is saved at epoch 31!![02/0032] | train_loss:1.6058 val_acc:46.4376 val_loss:1.4447
+[02/0033] | train_loss:1.6031 val_acc:45.5993 val_loss:1.436
+[02/0034] | train_loss:1.5857 val_acc:47.192 val_loss:1.4359
+model is saved at epoch 34!![02/0035] | train_loss:1.5722 val_acc:46.1861 val_loss:1.4444
+[02/0036] | train_loss:1.5884 val_acc:47.6111 val_loss:1.4305
+model is saved at epoch 36!![02/0037] | train_loss:1.5783 val_acc:47.2758 val_loss:1.4008
+[02/0038] | train_loss:1.5717 val_acc:46.9405 val_loss:1.4209
+[02/0039] | train_loss:1.5729 val_acc:46.4376 val_loss:1.4251
+[02/0040] | train_loss:1.5724 val_acc:46.8567 val_loss:1.4402
+[02/0041] | train_loss:1.558 val_acc:47.1081 val_loss:1.4161
+[02/0042] | train_loss:1.5626 val_acc:47.6949 val_loss:1.4032
+model is saved at epoch 42!![02/0043] | train_loss:1.5546 val_acc:47.192 val_loss:1.4456
+[02/0044] | train_loss:1.5596 val_acc:47.9464 val_loss:1.383
+model is saved at epoch 44!![02/0045] | train_loss:1.5489 val_acc:48.1978 val_loss:1.404
+model is saved at epoch 45!![02/0046] | train_loss:1.5354 val_acc:48.7846 val_loss:1.3612
+model is saved at epoch 46!![02/0047] | train_loss:1.5534 val_acc:48.1978 val_loss:1.397
+[02/0048] | train_loss:1.5263 val_acc:48.9522 val_loss:1.375
+model is saved at epoch 48!![02/0049] | train_loss:1.5387 val_acc:48.7846 val_loss:1.3957
+[02/0050] | train_loss:1.5459 val_acc:46.2699 val_loss:1.4172
+[02/0051] | train_loss:1.5315 val_acc:47.3596 val_loss:1.3904
+[02/0052] | train_loss:1.5357 val_acc:47.3596 val_loss:1.3945
+[02/0053] | train_loss:1.5431 val_acc:48.1978 val_loss:1.3893
+[02/0054] | train_loss:1.5431 val_acc:48.6169 val_loss:1.3939
+[02/0055] | train_loss:1.5316 val_acc:48.7846 val_loss:1.4129
+[02/0056] | train_loss:1.5383 val_acc:48.0302 val_loss:1.3839
+[02/0057] | train_loss:1.5189 val_acc:47.4434 val_loss:1.4181
+[02/0058] | train_loss:1.5257 val_acc:47.8625 val_loss:1.3743
+[02/0059] | train_loss:1.5285 val_acc:48.1978 val_loss:1.3925
+[02/0060] | train_loss:1.5293 val_acc:48.7008 val_loss:1.3761
+[02/0061] | train_loss:1.533 val_acc:48.7008 val_loss:1.3834
+[02/0062] | train_loss:1.533 val_acc:48.0302 val_loss:1.4338
+[02/0063] | train_loss:1.5182 val_acc:48.9522 val_loss:1.3603
+[02/0064] | train_loss:1.5213 val_acc:49.4552 val_loss:1.3734
+model is saved at epoch 64!![02/0065] | train_loss:1.5183 val_acc:49.8743 val_loss:1.37
+model is saved at epoch 65!![02/0066] | train_loss:1.5208 val_acc:48.5331 val_loss:1.3736
+[02/0067] | train_loss:1.5226 val_acc:48.0302 val_loss:1.3868
+[02/0068] | train_loss:1.5163 val_acc:48.7846 val_loss:1.3594
+[02/0069] | train_loss:1.515 val_acc:49.7066 val_loss:1.3538
+[02/0070] | train_loss:1.5053 val_acc:47.6949 val_loss:1.3837
+[02/0071] | train_loss:1.5111 val_acc:49.1199 val_loss:1.3849
+[02/0072] | train_loss:1.5158 val_acc:49.3713 val_loss:1.3589
+[02/0073] | train_loss:1.5166 val_acc:48.5331 val_loss:1.4047
+[02/0074] | train_loss:1.514 val_acc:48.0302 val_loss:1.3618
+[02/0075] | train_loss:1.5041 val_acc:48.3655 val_loss:1.3511
+[02/0076] | train_loss:1.5081 val_acc:49.2875 val_loss:1.3618
+[02/0077] | train_loss:1.5025 val_acc:48.9522 val_loss:1.3725
+[02/0078] | train_loss:1.4972 val_acc:48.0302 val_loss:1.3656
+[02/0079] | train_loss:1.4932 val_acc:49.1199 val_loss:1.36
+[02/0080] | train_loss:1.5077 val_acc:47.3596 val_loss:1.357
+[02/0081] | train_loss:1.4998 val_acc:47.6949 val_loss:1.3977
+[02/0082] | train_loss:1.4971 val_acc:50.1257 val_loss:1.3745
+model is saved at epoch 82!![02/0083] | train_loss:1.4991 val_acc:49.6228 val_loss:1.369
+[02/0084] | train_loss:1.5021 val_acc:47.9464 val_loss:1.3809
+[02/0085] | train_loss:1.5056 val_acc:48.8684 val_loss:1.3657
+[02/0086] | train_loss:1.4936 val_acc:48.3655 val_loss:1.3782
+[02/0087] | train_loss:1.4843 val_acc:49.2037 val_loss:1.3601
+[02/0088] | train_loss:1.503 val_acc:48.1978 val_loss:1.3632
+[02/0089] | train_loss:1.4774 val_acc:48.0302 val_loss:1.3714
+[02/0090] | train_loss:1.4959 val_acc:48.5331 val_loss:1.3817
+[02/0091] | train_loss:1.505 val_acc:48.3655 val_loss:1.3768
+[02/0092] | train_loss:1.4796 val_acc:48.9522 val_loss:1.3941
+[02/0093] | train_loss:1.4904 val_acc:49.539 val_loss:1.3774
+[02/0094] | train_loss:1.4946 val_acc:50.2096 val_loss:1.3564
+model is saved at epoch 94!![02/0095] | train_loss:1.4873 val_acc:48.5331 val_loss:1.4093
+[02/0096] | train_loss:1.4849 val_acc:49.4552 val_loss:1.3623
+[02/0097] | train_loss:1.4846 val_acc:50.2934 val_loss:1.3855
+model is saved at epoch 97!![02/0098] | train_loss:1.479 val_acc:47.8625 val_loss:1.3558
+[02/0099] | train_loss:1.467 val_acc:49.1199 val_loss:1.3771
+[02/0100] | train_loss:1.4897 val_acc:48.0302 val_loss:1.3697
+[02/0101] | train_loss:1.4655 val_acc:49.3713 val_loss:1.3426
+[02/0102] | train_loss:1.4613 val_acc:49.2875 val_loss:1.357
+[02/0103] | train_loss:1.4775 val_acc:50.461 val_loss:1.3475
+model is saved at epoch 103!![02/0104] | train_loss:1.4593 val_acc:49.6228 val_loss:1.34
+[02/0105] | train_loss:1.4675 val_acc:49.4552 val_loss:1.3868
+[02/0106] | train_loss:1.458 val_acc:49.3713 val_loss:1.3743
+[02/0107] | train_loss:1.4711 val_acc:48.4493 val_loss:1.3913
+[02/0108] | train_loss:1.4689 val_acc:48.6169 val_loss:1.3422
+[02/0109] | train_loss:1.4653 val_acc:49.036 val_loss:1.3616
+[02/0110] | train_loss:1.4724 val_acc:49.9581 val_loss:1.3758
+[02/0111] | train_loss:1.4681 val_acc:50.5448 val_loss:1.346
+model is saved at epoch 111!![02/0112] | train_loss:1.4666 val_acc:49.539 val_loss:1.3691
+[02/0113] | train_loss:1.4678 val_acc:49.6228 val_loss:1.3489
+[02/0114] | train_loss:1.4466 val_acc:49.2037 val_loss:1.3614
+[02/0115] | train_loss:1.4482 val_acc:50.0419 val_loss:1.3375
+[02/0116] | train_loss:1.4664 val_acc:49.2875 val_loss:1.373
+[02/0117] | train_loss:1.4532 val_acc:50.1257 val_loss:1.352
+[02/0118] | train_loss:1.4518 val_acc:49.8743 val_loss:1.3739
+[02/0119] | train_loss:1.4579 val_acc:50.2934 val_loss:1.3437
+[02/0120] | train_loss:1.458 val_acc:49.6228 val_loss:1.3869
+[02/0121] | train_loss:1.4617 val_acc:49.539 val_loss:1.3745
+[02/0122] | train_loss:1.4568 val_acc:49.3713 val_loss:1.3993
+[02/0123] | train_loss:1.4537 val_acc:49.8743 val_loss:1.3914
+[02/0124] | train_loss:1.4537 val_acc:49.036 val_loss:1.3623
+[02/0125] | train_loss:1.446 val_acc:48.7846 val_loss:1.3827
+[02/0126] | train_loss:1.4464 val_acc:49.6228 val_loss:1.3737
+[02/0127] | train_loss:1.4491 val_acc:49.7066 val_loss:1.3474
+[02/0128] | train_loss:1.4619 val_acc:46.7728 val_loss:1.3803
+[02/0129] | train_loss:1.4475 val_acc:49.4552 val_loss:1.361
+[02/0130] | train_loss:1.4483 val_acc:48.8684 val_loss:1.3411
+[02/0131] | train_loss:1.4511 val_acc:50.7125 val_loss:1.3496
+model is saved at epoch 131!![02/0132] | train_loss:1.4576 val_acc:49.8743 val_loss:1.3663
+[02/0133] | train_loss:1.4502 val_acc:48.7008 val_loss:1.3583
+[02/0134] | train_loss:1.4359 val_acc:49.1199 val_loss:1.3629
+[02/0135] | train_loss:1.4387 val_acc:50.0419 val_loss:1.3485
+[02/0136] | train_loss:1.4189 val_acc:49.7066 val_loss:1.3421
+[02/0137] | train_loss:1.4239 val_acc:51.8022 val_loss:1.3652
+model is saved at epoch 137!![02/0138] | train_loss:1.4219 val_acc:48.2816 val_loss:1.3546
+[02/0139] | train_loss:1.4419 val_acc:48.2816 val_loss:1.3725
+[02/0140] | train_loss:1.4295 val_acc:48.7846 val_loss:1.3387
+[02/0141] | train_loss:1.4305 val_acc:48.8684 val_loss:1.3595
+[02/0142] | train_loss:1.429 val_acc:50.5448 val_loss:1.3638
+[02/0143] | train_loss:1.4301 val_acc:48.3655 val_loss:1.4052
+[02/0144] | train_loss:1.4365 val_acc:48.3655 val_loss:1.3723
+[02/0145] | train_loss:1.4264 val_acc:50.2934 val_loss:1.3537
+[02/0146] | train_loss:1.425 val_acc:49.4552 val_loss:1.3703
+[02/0147] | train_loss:1.4156 val_acc:48.7846 val_loss:1.3658
+[02/0148] | train_loss:1.4275 val_acc:50.2096 val_loss:1.3441
+[02/0149] | train_loss:1.414 val_acc:49.2037 val_loss:1.3705
+[02/0150] | train_loss:1.4154 val_acc:49.1199 val_loss:1.3581
+[02/0151] | train_loss:1.4174 val_acc:49.2875 val_loss:1.3766
+[02/0152] | train_loss:1.418 val_acc:50.2934 val_loss:1.368
+[02/0153] | train_loss:1.4141 val_acc:50.2096 val_loss:1.3548
+[02/0154] | train_loss:1.4206 val_acc:51.2154 val_loss:1.3277
+[02/0155] | train_loss:1.4204 val_acc:50.7963 val_loss:1.3394
+[02/0156] | train_loss:1.418 val_acc:50.2934 val_loss:1.333
+[02/0157] | train_loss:1.4128 val_acc:50.6287 val_loss:1.3573
+[02/0158] | train_loss:1.4222 val_acc:49.2037 val_loss:1.3523
+[02/0159] | train_loss:1.4148 val_acc:49.3713 val_loss:1.4165
+[02/0160] | train_loss:1.4214 val_acc:49.4552 val_loss:1.369
+[02/0161] | train_loss:1.4092 val_acc:50.7963 val_loss:1.3417
+[02/0162] | train_loss:1.413 val_acc:50.6287 val_loss:1.3413
+[02/0163] | train_loss:1.4047 val_acc:49.539 val_loss:1.3592
+[02/0164] | train_loss:1.4109 val_acc:50.7125 val_loss:1.3493
+[02/0165] | train_loss:1.4005 val_acc:50.2096 val_loss:1.3515
+[02/0166] | train_loss:1.4133 val_acc:49.2875 val_loss:1.3614
+[02/0167] | train_loss:1.3973 val_acc:48.6169 val_loss:1.354
+[02/0168] | train_loss:1.3998 val_acc:48.2816 val_loss:1.375
+[02/0169] | train_loss:1.4173 val_acc:49.9581 val_loss:1.3544
+[02/0170] | train_loss:1.4018 val_acc:48.4493 val_loss:1.3671
+[02/0171] | train_loss:1.4161 val_acc:50.2096 val_loss:1.356
+[02/0172] | train_loss:1.4107 val_acc:49.4552 val_loss:1.3573
+[02/0173] | train_loss:1.4035 val_acc:49.8743 val_loss:1.3445
+[02/0174] | train_loss:1.4103 val_acc:49.8743 val_loss:1.3656
+[02/0175] | train_loss:1.4056 val_acc:49.1199 val_loss:1.3704
+[02/0176] | train_loss:1.4127 val_acc:49.7066 val_loss:1.3519
+[02/0177] | train_loss:1.3954 val_acc:49.2875 val_loss:1.3599
+[02/0178] | train_loss:1.3934 val_acc:49.9581 val_loss:1.356
+[02/0179] | train_loss:1.3862 val_acc:49.036 val_loss:1.3802
+[02/0180] | train_loss:1.3857 val_acc:50.461 val_loss:1.3592
+[02/0181] | train_loss:1.3903 val_acc:49.6228 val_loss:1.3623
+[02/0182] | train_loss:1.4047 val_acc:50.0419 val_loss:1.3564
+[02/0183] | train_loss:1.39 val_acc:49.036 val_loss:1.3696
+[02/0184] | train_loss:1.368 val_acc:49.9581 val_loss:1.3526
+[02/0185] | train_loss:1.3818 val_acc:50.1257 val_loss:1.3788
+[02/0186] | train_loss:1.3843 val_acc:48.5331 val_loss:1.3944
+[02/0187] | train_loss:1.4036 val_acc:49.2037 val_loss:1.3764
+[02/0188] | train_loss:1.3798 val_acc:50.2934 val_loss:1.3622
+Fold: [2/10] Test is finish !! 
+ Test Metrics are: test_acc:49.7904 test_loss:1.3856fold [2/10] is start!!
+[03/0001] | train_loss:2.2169 val_acc:23.7217 val_loss:2.1984
+model is saved at epoch 1!![03/0002] | train_loss:2.0339 val_acc:34.1157 val_loss:1.8514
+model is saved at epoch 2!![03/0003] | train_loss:1.9707 val_acc:34.7024 val_loss:1.7679
+model is saved at epoch 3!![03/0004] | train_loss:1.9122 val_acc:36.4627 val_loss:1.7197
+model is saved at epoch 4!![03/0005] | train_loss:1.8697 val_acc:37.0495 val_loss:1.6751
+model is saved at epoch 5!![03/0006] | train_loss:1.8472 val_acc:37.8039 val_loss:1.6867
+model is saved at epoch 6!![03/0007] | train_loss:1.8256 val_acc:40.57 val_loss:1.6043
+model is saved at epoch 7!![03/0008] | train_loss:1.8066 val_acc:38.5583 val_loss:1.6366
+[03/0009] | train_loss:1.7748 val_acc:39.4803 val_loss:1.5942
+[03/0010] | train_loss:1.758 val_acc:41.0729 val_loss:1.5845
+model is saved at epoch 10!![03/0011] | train_loss:1.7339 val_acc:41.3244 val_loss:1.5481
+model is saved at epoch 11!![03/0012] | train_loss:1.6969 val_acc:42.5817 val_loss:1.5275
+model is saved at epoch 12!![03/0013] | train_loss:1.6929 val_acc:42.8332 val_loss:1.5156
+model is saved at epoch 13!![03/0014] | train_loss:1.681 val_acc:42.917 val_loss:1.529
+model is saved at epoch 14!![03/0015] | train_loss:1.6822 val_acc:44.5096 val_loss:1.4946
+model is saved at epoch 15!![03/0016] | train_loss:1.67 val_acc:44.5935 val_loss:1.5036
+model is saved at epoch 16!![03/0017] | train_loss:1.671 val_acc:44.8449 val_loss:1.4745
+model is saved at epoch 17!![03/0018] | train_loss:1.6499 val_acc:45.0126 val_loss:1.4685
+model is saved at epoch 18!![03/0019] | train_loss:1.641 val_acc:44.342 val_loss:1.4682
+[03/0020] | train_loss:1.6342 val_acc:45.4317 val_loss:1.4654
+model is saved at epoch 20!![03/0021] | train_loss:1.6202 val_acc:46.5214 val_loss:1.4718
+model is saved at epoch 21!![03/0022] | train_loss:1.6098 val_acc:46.689 val_loss:1.4242
+model is saved at epoch 22!![03/0023] | train_loss:1.6089 val_acc:46.5214 val_loss:1.4398
+[03/0024] | train_loss:1.5982 val_acc:45.264 val_loss:1.4446
+[03/0025] | train_loss:1.5839 val_acc:47.3596 val_loss:1.4228
+model is saved at epoch 25!![03/0026] | train_loss:1.5929 val_acc:46.5214 val_loss:1.4244
+[03/0027] | train_loss:1.6068 val_acc:47.2758 val_loss:1.4144
+[03/0028] | train_loss:1.5733 val_acc:47.8625 val_loss:1.4366
+model is saved at epoch 28!![03/0029] | train_loss:1.6075 val_acc:47.5272 val_loss:1.4244
+[03/0030] | train_loss:1.5765 val_acc:47.5272 val_loss:1.4222
+[03/0031] | train_loss:1.5844 val_acc:46.0184 val_loss:1.4426
+[03/0032] | train_loss:1.5798 val_acc:46.689 val_loss:1.4526
+[03/0033] | train_loss:1.5671 val_acc:48.2816 val_loss:1.4167
+model is saved at epoch 33!![03/0034] | train_loss:1.5509 val_acc:47.7787 val_loss:1.382
+[03/0035] | train_loss:1.5505 val_acc:47.4434 val_loss:1.39
+[03/0036] | train_loss:1.5791 val_acc:47.6949 val_loss:1.3952
+[03/0037] | train_loss:1.5639 val_acc:46.2699 val_loss:1.4467
+[03/0038] | train_loss:1.5583 val_acc:47.8625 val_loss:1.3845
+[03/0039] | train_loss:1.5546 val_acc:48.5331 val_loss:1.3814
+model is saved at epoch 39!![03/0040] | train_loss:1.5524 val_acc:46.9405 val_loss:1.3927
+[03/0041] | train_loss:1.5422 val_acc:48.114 val_loss:1.39
+[03/0042] | train_loss:1.5443 val_acc:48.5331 val_loss:1.3793
+[03/0043] | train_loss:1.5585 val_acc:48.1978 val_loss:1.3938
+[03/0044] | train_loss:1.5388 val_acc:48.4493 val_loss:1.3819
+[03/0045] | train_loss:1.5373 val_acc:47.7787 val_loss:1.4134
+[03/0046] | train_loss:1.53 val_acc:48.5331 val_loss:1.402
+[03/0047] | train_loss:1.5319 val_acc:49.036 val_loss:1.3706
+model is saved at epoch 47!![03/0048] | train_loss:1.5213 val_acc:47.8625 val_loss:1.3917
+[03/0049] | train_loss:1.5206 val_acc:48.5331 val_loss:1.3962
+[03/0050] | train_loss:1.5059 val_acc:48.114 val_loss:1.3779
+[03/0051] | train_loss:1.5169 val_acc:49.4552 val_loss:1.3601
+model is saved at epoch 51!![03/0052] | train_loss:1.5127 val_acc:47.7787 val_loss:1.4253
+[03/0053] | train_loss:1.5017 val_acc:48.8684 val_loss:1.3859
+[03/0054] | train_loss:1.5181 val_acc:47.9464 val_loss:1.3776
+[03/0055] | train_loss:1.5162 val_acc:48.0302 val_loss:1.3598
+[03/0056] | train_loss:1.5096 val_acc:46.9405 val_loss:1.4156
+[03/0057] | train_loss:1.5064 val_acc:48.114 val_loss:1.385
+[03/0058] | train_loss:1.5067 val_acc:49.2875 val_loss:1.3686
+[03/0059] | train_loss:1.4991 val_acc:49.8743 val_loss:1.3601
+model is saved at epoch 59!![03/0060] | train_loss:1.4877 val_acc:50.3772 val_loss:1.3856
+model is saved at epoch 60!![03/0061] | train_loss:1.4994 val_acc:48.1978 val_loss:1.3669
+[03/0062] | train_loss:1.4973 val_acc:47.192 val_loss:1.3688
+[03/0063] | train_loss:1.4937 val_acc:49.4552 val_loss:1.3652
+[03/0064] | train_loss:1.4907 val_acc:47.6111 val_loss:1.3799
+[03/0065] | train_loss:1.4955 val_acc:49.539 val_loss:1.3479
+[03/0066] | train_loss:1.4851 val_acc:48.9522 val_loss:1.3642
+[03/0067] | train_loss:1.4966 val_acc:48.114 val_loss:1.4118
+[03/0068] | train_loss:1.4889 val_acc:49.8743 val_loss:1.3493
+[03/0069] | train_loss:1.4881 val_acc:48.6169 val_loss:1.3612
+[03/0070] | train_loss:1.4762 val_acc:49.2875 val_loss:1.3768
+[03/0071] | train_loss:1.4801 val_acc:49.6228 val_loss:1.3497
+[03/0072] | train_loss:1.4811 val_acc:50.1257 val_loss:1.3555
+[03/0073] | train_loss:1.4738 val_acc:49.7066 val_loss:1.3743
+[03/0074] | train_loss:1.4838 val_acc:48.114 val_loss:1.4015
+[03/0075] | train_loss:1.4795 val_acc:50.1257 val_loss:1.3525
+[03/0076] | train_loss:1.4695 val_acc:48.8684 val_loss:1.3517
+[03/0077] | train_loss:1.477 val_acc:48.8684 val_loss:1.3684
+[03/0078] | train_loss:1.4684 val_acc:48.7846 val_loss:1.3885
+[03/0079] | train_loss:1.4688 val_acc:49.539 val_loss:1.3752
+[03/0080] | train_loss:1.4705 val_acc:47.9464 val_loss:1.3774
+[03/0081] | train_loss:1.4759 val_acc:48.5331 val_loss:1.3888
+[03/0082] | train_loss:1.4851 val_acc:49.036 val_loss:1.3748
+[03/0083] | train_loss:1.4716 val_acc:47.2758 val_loss:1.4062
+[03/0084] | train_loss:1.4589 val_acc:49.1199 val_loss:1.371
+[03/0085] | train_loss:1.4631 val_acc:50.2934 val_loss:1.3444
+[03/0086] | train_loss:1.4833 val_acc:49.4552 val_loss:1.3879
+[03/0087] | train_loss:1.4753 val_acc:48.7846 val_loss:1.361
+[03/0088] | train_loss:1.4577 val_acc:49.539 val_loss:1.3787
+[03/0089] | train_loss:1.4494 val_acc:51.0478 val_loss:1.3376
+model is saved at epoch 89!![03/0090] | train_loss:1.4706 val_acc:49.3713 val_loss:1.355
+[03/0091] | train_loss:1.4812 val_acc:48.8684 val_loss:1.3815
+[03/0092] | train_loss:1.4635 val_acc:50.0419 val_loss:1.3579
+[03/0093] | train_loss:1.4537 val_acc:47.3596 val_loss:1.3885
+[03/0094] | train_loss:1.4625 val_acc:49.1199 val_loss:1.3743
+[03/0095] | train_loss:1.4607 val_acc:50.461 val_loss:1.3557
+[03/0096] | train_loss:1.4541 val_acc:47.9464 val_loss:1.3844
+[03/0097] | train_loss:1.4557 val_acc:50.3772 val_loss:1.3326
+[03/0098] | train_loss:1.4669 val_acc:48.9522 val_loss:1.3888
+[03/0099] | train_loss:1.4673 val_acc:49.2875 val_loss:1.3486
+[03/0100] | train_loss:1.4481 val_acc:50.0419 val_loss:1.3671
+[03/0101] | train_loss:1.4625 val_acc:48.9522 val_loss:1.3665
+[03/0102] | train_loss:1.4647 val_acc:48.7008 val_loss:1.3862
+[03/0103] | train_loss:1.4663 val_acc:48.9522 val_loss:1.3857
+[03/0104] | train_loss:1.4607 val_acc:48.4493 val_loss:1.363
+[03/0105] | train_loss:1.4601 val_acc:50.7125 val_loss:1.3498
+[03/0106] | train_loss:1.4603 val_acc:49.9581 val_loss:1.3574
+[03/0107] | train_loss:1.4555 val_acc:48.8684 val_loss:1.3575
+[03/0108] | train_loss:1.4518 val_acc:50.3772 val_loss:1.3494
+[03/0109] | train_loss:1.4457 val_acc:50.461 val_loss:1.3481
+[03/0110] | train_loss:1.4507 val_acc:49.1199 val_loss:1.3823
+[03/0111] | train_loss:1.4477 val_acc:49.1199 val_loss:1.3774
+[03/0112] | train_loss:1.4513 val_acc:50.5448 val_loss:1.3522
+[03/0113] | train_loss:1.4498 val_acc:50.7125 val_loss:1.3426
+[03/0114] | train_loss:1.4556 val_acc:50.2934 val_loss:1.3405
+[03/0115] | train_loss:1.4457 val_acc:49.8743 val_loss:1.348
+[03/0116] | train_loss:1.4321 val_acc:51.4669 val_loss:1.3318
+model is saved at epoch 116!![03/0117] | train_loss:1.4393 val_acc:49.7066 val_loss:1.371
+[03/0118] | train_loss:1.4469 val_acc:49.036 val_loss:1.3652
+[03/0119] | train_loss:1.4309 val_acc:49.1199 val_loss:1.3706
+[03/0120] | train_loss:1.4331 val_acc:51.0478 val_loss:1.3479
+[03/0121] | train_loss:1.4465 val_acc:47.6949 val_loss:1.3835
+[03/0122] | train_loss:1.4465 val_acc:48.3655 val_loss:1.3794
+[03/0123] | train_loss:1.4501 val_acc:49.036 val_loss:1.3613
+[03/0124] | train_loss:1.4538 val_acc:45.8508 val_loss:1.4558
+[03/0125] | train_loss:1.4422 val_acc:49.9581 val_loss:1.3466
+[03/0126] | train_loss:1.4283 val_acc:48.114 val_loss:1.3759
+[03/0127] | train_loss:1.4353 val_acc:51.2992 val_loss:1.3479
+[03/0128] | train_loss:1.4338 val_acc:49.6228 val_loss:1.3556
+[03/0129] | train_loss:1.4296 val_acc:47.5272 val_loss:1.3992
+[03/0130] | train_loss:1.4367 val_acc:48.8684 val_loss:1.3705
+[03/0131] | train_loss:1.4422 val_acc:49.2037 val_loss:1.3543
+[03/0132] | train_loss:1.4391 val_acc:50.2934 val_loss:1.3467
+[03/0133] | train_loss:1.4382 val_acc:48.8684 val_loss:1.3844
+[03/0134] | train_loss:1.4361 val_acc:50.1257 val_loss:1.3726
+[03/0135] | train_loss:1.4499 val_acc:49.2037 val_loss:1.37
+[03/0136] | train_loss:1.4336 val_acc:49.2037 val_loss:1.4012
+[03/0137] | train_loss:1.4347 val_acc:50.6287 val_loss:1.3563
+[03/0138] | train_loss:1.4358 val_acc:47.5272 val_loss:1.417
+[03/0139] | train_loss:1.4288 val_acc:48.9522 val_loss:1.3888
+[03/0140] | train_loss:1.4338 val_acc:48.114 val_loss:1.3827
+[03/0141] | train_loss:1.4276 val_acc:48.2816 val_loss:1.3669
+[03/0142] | train_loss:1.4358 val_acc:50.0419 val_loss:1.3586
+[03/0143] | train_loss:1.4336 val_acc:49.036 val_loss:1.3641
+[03/0144] | train_loss:1.4446 val_acc:49.2037 val_loss:1.3725
+[03/0145] | train_loss:1.4358 val_acc:49.539 val_loss:1.3628
+[03/0146] | train_loss:1.4237 val_acc:50.3772 val_loss:1.3486
+[03/0147] | train_loss:1.4229 val_acc:50.3772 val_loss:1.3685
+[03/0148] | train_loss:1.4215 val_acc:49.3713 val_loss:1.382
+[03/0149] | train_loss:1.4262 val_acc:48.7846 val_loss:1.372
+[03/0150] | train_loss:1.4313 val_acc:48.7846 val_loss:1.3758
+[03/0151] | train_loss:1.4407 val_acc:49.7904 val_loss:1.3707
+[03/0152] | train_loss:1.4222 val_acc:50.0419 val_loss:1.3558
+[03/0153] | train_loss:1.4234 val_acc:50.7963 val_loss:1.3738
+[03/0154] | train_loss:1.415 val_acc:50.8801 val_loss:1.3331
+[03/0155] | train_loss:1.4122 val_acc:48.7008 val_loss:1.3927
+[03/0156] | train_loss:1.4093 val_acc:49.8743 val_loss:1.3506
+[03/0157] | train_loss:1.4181 val_acc:49.1199 val_loss:1.3676
+[03/0158] | train_loss:1.418 val_acc:49.539 val_loss:1.3784
+[03/0159] | train_loss:1.4113 val_acc:49.7066 val_loss:1.3739
+[03/0160] | train_loss:1.4162 val_acc:50.964 val_loss:1.3421
+[03/0161] | train_loss:1.4155 val_acc:49.1199 val_loss:1.3865
+[03/0162] | train_loss:1.4257 val_acc:49.7904 val_loss:1.3836
+[03/0163] | train_loss:1.4297 val_acc:48.5331 val_loss:1.4046
+[03/0164] | train_loss:1.4207 val_acc:49.9581 val_loss:1.3773
+[03/0165] | train_loss:1.4146 val_acc:50.2096 val_loss:1.3702
+[03/0166] | train_loss:1.4049 val_acc:50.8801 val_loss:1.3686
+[03/0167] | train_loss:1.4266 val_acc:49.7904 val_loss:1.3481
+Fold: [3/10] Test is finish !! 
+ Test Metrics are: test_acc:49.6228 test_loss:1.3671fold [3/10] is start!!
+[04/0001] | train_loss:2.2025 val_acc:21.8776 val_loss:2.2429
+model is saved at epoch 1!![04/0002] | train_loss:2.0359 val_acc:30.5113 val_loss:1.8752
+model is saved at epoch 2!![04/0003] | train_loss:1.9727 val_acc:30.679 val_loss:1.8212
+model is saved at epoch 3!![04/0004] | train_loss:1.9342 val_acc:34.1157 val_loss:1.7792
+model is saved at epoch 4!![04/0005] | train_loss:1.8946 val_acc:34.8701 val_loss:1.7506
+model is saved at epoch 5!![04/0006] | train_loss:1.855 val_acc:35.6245 val_loss:1.704
+model is saved at epoch 6!![04/0007] | train_loss:1.8182 val_acc:39.145 val_loss:1.6733
+model is saved at epoch 7!![04/0008] | train_loss:1.7672 val_acc:39.0612 val_loss:1.623
+[04/0009] | train_loss:1.734 val_acc:41.3244 val_loss:1.5515
+model is saved at epoch 9!![04/0010] | train_loss:1.7193 val_acc:42.8332 val_loss:1.5369
+model is saved at epoch 10!![04/0011] | train_loss:1.6615 val_acc:42.5817 val_loss:1.5146
+[04/0012] | train_loss:1.6584 val_acc:43.6714 val_loss:1.5237
+model is saved at epoch 12!![04/0013] | train_loss:1.6345 val_acc:45.4317 val_loss:1.4562
+model is saved at epoch 13!![04/0014] | train_loss:1.625 val_acc:43.1685 val_loss:1.5098
+[04/0015] | train_loss:1.6112 val_acc:43.6714 val_loss:1.4597
+[04/0016] | train_loss:1.5988 val_acc:45.264 val_loss:1.4808
+[04/0017] | train_loss:1.5835 val_acc:44.8449 val_loss:1.4488
+[04/0018] | train_loss:1.575 val_acc:46.6052 val_loss:1.4662
+model is saved at epoch 18!![04/0019] | train_loss:1.6015 val_acc:43.0847 val_loss:1.4939
+[04/0020] | train_loss:1.5736 val_acc:44.1743 val_loss:1.4817
+[04/0021] | train_loss:1.5508 val_acc:46.8567 val_loss:1.4154
+model is saved at epoch 21!![04/0022] | train_loss:1.5456 val_acc:47.2758 val_loss:1.4254
+model is saved at epoch 22!![04/0023] | train_loss:1.5383 val_acc:47.0243 val_loss:1.4117
+[04/0024] | train_loss:1.5474 val_acc:47.6111 val_loss:1.4086
+model is saved at epoch 24!![04/0025] | train_loss:1.532 val_acc:46.1861 val_loss:1.4044
+[04/0026] | train_loss:1.5322 val_acc:47.6949 val_loss:1.3962
+model is saved at epoch 26!![04/0027] | train_loss:1.5218 val_acc:46.6052 val_loss:1.4338
+[04/0028] | train_loss:1.5182 val_acc:46.689 val_loss:1.432
+[04/0029] | train_loss:1.5242 val_acc:46.8567 val_loss:1.3951
+[04/0030] | train_loss:1.5233 val_acc:46.8567 val_loss:1.407
+[04/0031] | train_loss:1.5215 val_acc:46.4376 val_loss:1.41
+[04/0032] | train_loss:1.5253 val_acc:47.4434 val_loss:1.3844
+[04/0033] | train_loss:1.5153 val_acc:46.5214 val_loss:1.4343
+[04/0034] | train_loss:1.5014 val_acc:47.3596 val_loss:1.3921
+[04/0035] | train_loss:1.4945 val_acc:47.7787 val_loss:1.3889
+model is saved at epoch 35!![04/0036] | train_loss:1.502 val_acc:47.2758 val_loss:1.3803
+[04/0037] | train_loss:1.4867 val_acc:47.5272 val_loss:1.3809
+[04/0038] | train_loss:1.4925 val_acc:47.1081 val_loss:1.3996
+[04/0039] | train_loss:1.4861 val_acc:49.2875 val_loss:1.3947
+model is saved at epoch 39!![04/0040] | train_loss:1.499 val_acc:48.8684 val_loss:1.3844
+[04/0041] | train_loss:1.4855 val_acc:48.5331 val_loss:1.4057
+[04/0042] | train_loss:1.4944 val_acc:47.9464 val_loss:1.3744
+[04/0043] | train_loss:1.4878 val_acc:47.5272 val_loss:1.3924
+[04/0044] | train_loss:1.4771 val_acc:48.0302 val_loss:1.3838
+[04/0045] | train_loss:1.4777 val_acc:46.8567 val_loss:1.3784
+[04/0046] | train_loss:1.4797 val_acc:46.689 val_loss:1.4217
+[04/0047] | train_loss:1.4662 val_acc:46.9405 val_loss:1.3825
+[04/0048] | train_loss:1.4732 val_acc:48.5331 val_loss:1.3843
+[04/0049] | train_loss:1.4798 val_acc:47.0243 val_loss:1.3852
+[04/0050] | train_loss:1.4768 val_acc:48.2816 val_loss:1.3744
+[04/0051] | train_loss:1.4781 val_acc:48.1978 val_loss:1.3809
+[04/0052] | train_loss:1.4572 val_acc:47.9464 val_loss:1.3778
+[04/0053] | train_loss:1.4526 val_acc:47.1081 val_loss:1.429
+[04/0054] | train_loss:1.4677 val_acc:47.192 val_loss:1.3806
+[04/0055] | train_loss:1.4572 val_acc:48.7846 val_loss:1.384
+[04/0056] | train_loss:1.472 val_acc:48.114 val_loss:1.3805
+[04/0057] | train_loss:1.4617 val_acc:48.1978 val_loss:1.379
+[04/0058] | train_loss:1.4621 val_acc:48.3655 val_loss:1.3837
+[04/0059] | train_loss:1.4502 val_acc:47.7787 val_loss:1.3907
+[04/0060] | train_loss:1.4617 val_acc:47.6949 val_loss:1.382
+[04/0061] | train_loss:1.4461 val_acc:47.7787 val_loss:1.3776
+[04/0062] | train_loss:1.4518 val_acc:49.1199 val_loss:1.3815
+[04/0063] | train_loss:1.4507 val_acc:47.6949 val_loss:1.3754
+[04/0064] | train_loss:1.4369 val_acc:47.6111 val_loss:1.4106
+[04/0065] | train_loss:1.4556 val_acc:48.2816 val_loss:1.3749
+[04/0066] | train_loss:1.4579 val_acc:49.036 val_loss:1.3681
+[04/0067] | train_loss:1.4457 val_acc:48.1978 val_loss:1.3709
+[04/0068] | train_loss:1.4565 val_acc:49.4552 val_loss:1.3886
+model is saved at epoch 68!![04/0069] | train_loss:1.4344 val_acc:48.2816 val_loss:1.3894
+[04/0070] | train_loss:1.4425 val_acc:48.6169 val_loss:1.3828
+[04/0071] | train_loss:1.4435 val_acc:47.9464 val_loss:1.4069
+[04/0072] | train_loss:1.4469 val_acc:49.3713 val_loss:1.3638
+[04/0073] | train_loss:1.4321 val_acc:48.3655 val_loss:1.3843
+[04/0074] | train_loss:1.4306 val_acc:48.0302 val_loss:1.3682
+[04/0075] | train_loss:1.4246 val_acc:49.4552 val_loss:1.367
+[04/0076] | train_loss:1.4222 val_acc:48.3655 val_loss:1.3702
+[04/0077] | train_loss:1.4204 val_acc:48.7846 val_loss:1.3903
+[04/0078] | train_loss:1.4232 val_acc:48.7008 val_loss:1.3584
+[04/0079] | train_loss:1.4222 val_acc:48.6169 val_loss:1.3614
+[04/0080] | train_loss:1.436 val_acc:48.1978 val_loss:1.3678
+[04/0081] | train_loss:1.4228 val_acc:48.2816 val_loss:1.3648
+[04/0082] | train_loss:1.4344 val_acc:49.7904 val_loss:1.3829
+model is saved at epoch 82!![04/0083] | train_loss:1.411 val_acc:48.4493 val_loss:1.3617
+[04/0084] | train_loss:1.4186 val_acc:49.7066 val_loss:1.3627
+[04/0085] | train_loss:1.414 val_acc:50.5448 val_loss:1.3672
+model is saved at epoch 85!![04/0086] | train_loss:1.4089 val_acc:49.2875 val_loss:1.3667
+[04/0087] | train_loss:1.4158 val_acc:48.9522 val_loss:1.385
+[04/0088] | train_loss:1.4164 val_acc:48.7008 val_loss:1.373
+[04/0089] | train_loss:1.4373 val_acc:48.3655 val_loss:1.3835
+[04/0090] | train_loss:1.417 val_acc:49.3713 val_loss:1.3664
+[04/0091] | train_loss:1.4018 val_acc:49.036 val_loss:1.3629
+[04/0092] | train_loss:1.4079 val_acc:49.6228 val_loss:1.3511
+[04/0093] | train_loss:1.4052 val_acc:50.6287 val_loss:1.3512
+model is saved at epoch 93!![04/0094] | train_loss:1.4177 val_acc:49.4552 val_loss:1.3608
+[04/0095] | train_loss:1.4196 val_acc:49.2875 val_loss:1.3751
+[04/0096] | train_loss:1.4152 val_acc:49.2037 val_loss:1.3605
+[04/0097] | train_loss:1.3948 val_acc:49.3713 val_loss:1.3487
+[04/0098] | train_loss:1.3975 val_acc:49.9581 val_loss:1.3702
+[04/0099] | train_loss:1.4023 val_acc:50.3772 val_loss:1.3547
+[04/0100] | train_loss:1.4029 val_acc:49.7904 val_loss:1.3596
+[04/0101] | train_loss:1.3955 val_acc:48.1978 val_loss:1.3801
+[04/0102] | train_loss:1.3911 val_acc:48.6169 val_loss:1.3906
+[04/0103] | train_loss:1.3994 val_acc:48.9522 val_loss:1.3735
+[04/0104] | train_loss:1.4 val_acc:49.8743 val_loss:1.3854
+[04/0105] | train_loss:1.4113 val_acc:49.3713 val_loss:1.3788
+[04/0106] | train_loss:1.4168 val_acc:47.9464 val_loss:1.375
+[04/0107] | train_loss:1.3949 val_acc:49.6228 val_loss:1.3679
+[04/0108] | train_loss:1.3926 val_acc:50.5448 val_loss:1.3686
+[04/0109] | train_loss:1.3922 val_acc:49.7904 val_loss:1.3773
+[04/0110] | train_loss:1.3879 val_acc:48.5331 val_loss:1.3829
+[04/0111] | train_loss:1.3919 val_acc:50.0419 val_loss:1.3726
+[04/0112] | train_loss:1.3843 val_acc:49.7904 val_loss:1.3611
+[04/0113] | train_loss:1.393 val_acc:48.5331 val_loss:1.3649
+[04/0114] | train_loss:1.3807 val_acc:50.461 val_loss:1.3623
+[04/0115] | train_loss:1.3784 val_acc:49.4552 val_loss:1.3673
+[04/0116] | train_loss:1.3853 val_acc:50.3772 val_loss:1.368
+[04/0117] | train_loss:1.3816 val_acc:48.4493 val_loss:1.3957
+[04/0118] | train_loss:1.3739 val_acc:50.2934 val_loss:1.3719
+[04/0119] | train_loss:1.3766 val_acc:50.0419 val_loss:1.3611
+[04/0120] | train_loss:1.378 val_acc:48.6169 val_loss:1.391
+[04/0121] | train_loss:1.3825 val_acc:46.7728 val_loss:1.4175
+[04/0122] | train_loss:1.3681 val_acc:49.2875 val_loss:1.3791
+[04/0123] | train_loss:1.3705 val_acc:49.539 val_loss:1.3867
+[04/0124] | train_loss:1.3704 val_acc:50.0419 val_loss:1.3757
+[04/0125] | train_loss:1.368 val_acc:49.7904 val_loss:1.3594
+[04/0126] | train_loss:1.3763 val_acc:49.8743 val_loss:1.391
+[04/0127] | train_loss:1.3551 val_acc:48.8684 val_loss:1.3712
+[04/0128] | train_loss:1.3622 val_acc:49.6228 val_loss:1.3662
+[04/0129] | train_loss:1.3687 val_acc:50.5448 val_loss:1.3688
+[04/0130] | train_loss:1.365 val_acc:49.036 val_loss:1.382
+[04/0131] | train_loss:1.367 val_acc:50.461 val_loss:1.3644
+[04/0132] | train_loss:1.3624 val_acc:47.6111 val_loss:1.4048
+[04/0133] | train_loss:1.3618 val_acc:50.2934 val_loss:1.3848
+[04/0134] | train_loss:1.361 val_acc:48.4493 val_loss:1.4048
+[04/0135] | train_loss:1.3536 val_acc:49.2037 val_loss:1.366
+[04/0136] | train_loss:1.362 val_acc:49.4552 val_loss:1.3673
+[04/0137] | train_loss:1.3466 val_acc:51.2154 val_loss:1.3618
+model is saved at epoch 137!![04/0138] | train_loss:1.3456 val_acc:50.461 val_loss:1.3752
+[04/0139] | train_loss:1.3612 val_acc:49.7066 val_loss:1.3983
+[04/0140] | train_loss:1.3438 val_acc:50.6287 val_loss:1.3757
+[04/0141] | train_loss:1.3464 val_acc:48.9522 val_loss:1.3824
+[04/0142] | train_loss:1.3527 val_acc:49.7904 val_loss:1.367
+[04/0143] | train_loss:1.3507 val_acc:48.7008 val_loss:1.3998
+[04/0144] | train_loss:1.3403 val_acc:48.3655 val_loss:1.3998
+[04/0145] | train_loss:1.3516 val_acc:49.7904 val_loss:1.3712
+[04/0146] | train_loss:1.3475 val_acc:49.7904 val_loss:1.3818
+[04/0147] | train_loss:1.3502 val_acc:50.0419 val_loss:1.4059
+[04/0148] | train_loss:1.3387 val_acc:50.1257 val_loss:1.3916
+[04/0149] | train_loss:1.3436 val_acc:50.5448 val_loss:1.3969
+[04/0150] | train_loss:1.3341 val_acc:50.3772 val_loss:1.3896
+[04/0151] | train_loss:1.32 val_acc:51.1316 val_loss:1.3916
+[04/0152] | train_loss:1.3357 val_acc:49.7904 val_loss:1.391
+[04/0153] | train_loss:1.3312 val_acc:50.1257 val_loss:1.3654
+[04/0154] | train_loss:1.3337 val_acc:48.6169 val_loss:1.4108
+[04/0155] | train_loss:1.3396 val_acc:49.8743 val_loss:1.3938
+[04/0156] | train_loss:1.3192 val_acc:50.1257 val_loss:1.4315
+[04/0157] | train_loss:1.3268 val_acc:49.4552 val_loss:1.4147
+[04/0158] | train_loss:1.3314 val_acc:50.1257 val_loss:1.3898
+[04/0159] | train_loss:1.3321 val_acc:49.2875 val_loss:1.4017
+[04/0160] | train_loss:1.3163 val_acc:50.3772 val_loss:1.4104
+[04/0161] | train_loss:1.3264 val_acc:49.1199 val_loss:1.428
+[04/0162] | train_loss:1.3356 val_acc:48.8684 val_loss:1.4248
+[04/0163] | train_loss:1.3285 val_acc:48.8684 val_loss:1.4067
+[04/0164] | train_loss:1.3213 val_acc:49.539 val_loss:1.385
+[04/0165] | train_loss:1.319 val_acc:50.0419 val_loss:1.3962
+[04/0166] | train_loss:1.3189 val_acc:49.7904 val_loss:1.424
+[04/0167] | train_loss:1.3221 val_acc:49.4552 val_loss:1.4331
+[04/0168] | train_loss:1.3072 val_acc:50.0419 val_loss:1.4046
+[04/0169] | train_loss:1.3224 val_acc:50.2934 val_loss:1.4011
+[04/0170] | train_loss:1.3085 val_acc:48.8684 val_loss:1.4328
+[04/0171] | train_loss:1.3142 val_acc:50.1257 val_loss:1.4033
+[04/0172] | train_loss:1.3105 val_acc:49.6228 val_loss:1.4037
+[04/0173] | train_loss:1.3106 val_acc:49.4552 val_loss:1.3912
+[04/0174] | train_loss:1.3016 val_acc:50.0419 val_loss:1.393
+[04/0175] | train_loss:1.3012 val_acc:49.539 val_loss:1.4198
+[04/0176] | train_loss:1.3283 val_acc:49.8743 val_loss:1.3807
+[04/0177] | train_loss:1.3273 val_acc:49.2875 val_loss:1.4194
+[04/0178] | train_loss:1.3101 val_acc:48.5331 val_loss:1.432
+[04/0179] | train_loss:1.3148 val_acc:49.8743 val_loss:1.4162
+[04/0180] | train_loss:1.3123 val_acc:50.6287 val_loss:1.4122
+[04/0181] | train_loss:1.2969 val_acc:49.6228 val_loss:1.4034
+[04/0182] | train_loss:1.3007 val_acc:51.0478 val_loss:1.3988
+[04/0183] | train_loss:1.3044 val_acc:50.2934 val_loss:1.4041
+[04/0184] | train_loss:1.2898 val_acc:50.5448 val_loss:1.4321
+[04/0185] | train_loss:1.2969 val_acc:49.1199 val_loss:1.4201
+[04/0186] | train_loss:1.291 val_acc:49.4552 val_loss:1.4196
+[04/0187] | train_loss:1.2972 val_acc:50.7963 val_loss:1.3867
+[04/0188] | train_loss:1.2971 val_acc:49.8743 val_loss:1.4282
+Fold: [4/10] Test is finish !! 
+ Test Metrics are: test_acc:49.2037 test_loss:1.4077fold [4/10] is start!!
+[05/0001] | train_loss:2.2274 val_acc:21.207 val_loss:2.2152
+model is saved at epoch 1!![05/0002] | train_loss:2.0417 val_acc:32.3554 val_loss:1.8578
+model is saved at epoch 2!![05/0003] | train_loss:1.9633 val_acc:34.1995 val_loss:1.803
+model is saved at epoch 3!![05/0004] | train_loss:1.9151 val_acc:34.6186 val_loss:1.7756
+model is saved at epoch 4!![05/0005] | train_loss:1.8815 val_acc:35.5407 val_loss:1.7424
+model is saved at epoch 5!![05/0006] | train_loss:1.8629 val_acc:35.6245 val_loss:1.7268
+model is saved at epoch 6!![05/0007] | train_loss:1.8413 val_acc:35.5407 val_loss:1.732
+[05/0008] | train_loss:1.8178 val_acc:37.3847 val_loss:1.6901
+model is saved at epoch 8!![05/0009] | train_loss:1.8215 val_acc:39.8994 val_loss:1.6655
+model is saved at epoch 9!![05/0010] | train_loss:1.7715 val_acc:39.7318 val_loss:1.6214
+[05/0011] | train_loss:1.7599 val_acc:38.8097 val_loss:1.624
+[05/0012] | train_loss:1.7309 val_acc:40.4023 val_loss:1.5924
+model is saved at epoch 12!![05/0013] | train_loss:1.7186 val_acc:39.7318 val_loss:1.5991
+[05/0014] | train_loss:1.6968 val_acc:40.0671 val_loss:1.5537
+[05/0015] | train_loss:1.6765 val_acc:41.7435 val_loss:1.5654
+model is saved at epoch 15!![05/0016] | train_loss:1.6663 val_acc:42.7494 val_loss:1.5395
+model is saved at epoch 16!![05/0017] | train_loss:1.6721 val_acc:41.9111 val_loss:1.5421
+[05/0018] | train_loss:1.6527 val_acc:39.145 val_loss:1.627
+[05/0019] | train_loss:1.6414 val_acc:41.5759 val_loss:1.5326
+[05/0020] | train_loss:1.6367 val_acc:43.0008 val_loss:1.5292
+model is saved at epoch 20!![05/0021] | train_loss:1.6269 val_acc:44.7611 val_loss:1.5107
+model is saved at epoch 21!![05/0022] | train_loss:1.6166 val_acc:45.0964 val_loss:1.5122
+model is saved at epoch 22!![05/0023] | train_loss:1.602 val_acc:43.1685 val_loss:1.4981
+[05/0024] | train_loss:1.6171 val_acc:44.2582 val_loss:1.5257
+[05/0025] | train_loss:1.5968 val_acc:43.1685 val_loss:1.5084
+[05/0026] | train_loss:1.6053 val_acc:41.3244 val_loss:1.547
+[05/0027] | train_loss:1.5899 val_acc:44.8449 val_loss:1.485
+[05/0028] | train_loss:1.5801 val_acc:45.8508 val_loss:1.4938
+model is saved at epoch 28!![05/0029] | train_loss:1.5688 val_acc:42.4141 val_loss:1.5183
+[05/0030] | train_loss:1.5761 val_acc:45.0126 val_loss:1.4839
+[05/0031] | train_loss:1.5587 val_acc:45.6832 val_loss:1.4734
+[05/0032] | train_loss:1.5756 val_acc:44.9288 val_loss:1.4692
+[05/0033] | train_loss:1.57 val_acc:44.4258 val_loss:1.4739
+[05/0034] | train_loss:1.5699 val_acc:45.5155 val_loss:1.4829
+[05/0035] | train_loss:1.5637 val_acc:44.7611 val_loss:1.4753
+[05/0036] | train_loss:1.5592 val_acc:45.6832 val_loss:1.4832
+[05/0037] | train_loss:1.5712 val_acc:45.8508 val_loss:1.4553
+[05/0038] | train_loss:1.5597 val_acc:46.5214 val_loss:1.4686
+model is saved at epoch 38!![05/0039] | train_loss:1.5621 val_acc:43.1685 val_loss:1.496
+[05/0040] | train_loss:1.5541 val_acc:44.5096 val_loss:1.4834
+[05/0041] | train_loss:1.5402 val_acc:44.5096 val_loss:1.4722
+[05/0042] | train_loss:1.5351 val_acc:45.0126 val_loss:1.4729
+[05/0043] | train_loss:1.536 val_acc:46.0184 val_loss:1.4577
+[05/0044] | train_loss:1.54 val_acc:45.767 val_loss:1.449
+[05/0045] | train_loss:1.5343 val_acc:45.6832 val_loss:1.4323
+[05/0046] | train_loss:1.5266 val_acc:46.6052 val_loss:1.4485
+model is saved at epoch 46!![05/0047] | train_loss:1.5333 val_acc:45.4317 val_loss:1.4609
+[05/0048] | train_loss:1.5238 val_acc:46.7728 val_loss:1.442
+model is saved at epoch 48!![05/0049] | train_loss:1.5309 val_acc:46.6052 val_loss:1.452
+[05/0050] | train_loss:1.5226 val_acc:46.1023 val_loss:1.4369
+[05/0051] | train_loss:1.5088 val_acc:44.8449 val_loss:1.4639
+[05/0052] | train_loss:1.5308 val_acc:46.1023 val_loss:1.4577
+[05/0053] | train_loss:1.5126 val_acc:46.1023 val_loss:1.4492
+[05/0054] | train_loss:1.5199 val_acc:45.0964 val_loss:1.4476
+[05/0055] | train_loss:1.5243 val_acc:46.0184 val_loss:1.4388
+[05/0056] | train_loss:1.5262 val_acc:46.4376 val_loss:1.4431
+[05/0057] | train_loss:1.5253 val_acc:46.2699 val_loss:1.4326
+[05/0058] | train_loss:1.5083 val_acc:46.8567 val_loss:1.437
+model is saved at epoch 58!![05/0059] | train_loss:1.5244 val_acc:47.5272 val_loss:1.436
+model is saved at epoch 59!![05/0060] | train_loss:1.5321 val_acc:47.7787 val_loss:1.4292
+model is saved at epoch 60!![05/0061] | train_loss:1.515 val_acc:47.2758 val_loss:1.4399
+[05/0062] | train_loss:1.5146 val_acc:46.2699 val_loss:1.4287
+[05/0063] | train_loss:1.5163 val_acc:46.5214 val_loss:1.4591
+[05/0064] | train_loss:1.5116 val_acc:46.9405 val_loss:1.4298
+[05/0065] | train_loss:1.5141 val_acc:46.7728 val_loss:1.4259
+[05/0066] | train_loss:1.5134 val_acc:46.3537 val_loss:1.4501
+[05/0067] | train_loss:1.5031 val_acc:47.3596 val_loss:1.4311
+[05/0068] | train_loss:1.5139 val_acc:47.4434 val_loss:1.4432
+[05/0069] | train_loss:1.5097 val_acc:47.3596 val_loss:1.4345
+[05/0070] | train_loss:1.5035 val_acc:46.5214 val_loss:1.4306
+[05/0071] | train_loss:1.4923 val_acc:47.8625 val_loss:1.4184
+model is saved at epoch 71!![05/0072] | train_loss:1.5003 val_acc:45.9346 val_loss:1.4646
+[05/0073] | train_loss:1.502 val_acc:47.3596 val_loss:1.4336
+[05/0074] | train_loss:1.4946 val_acc:48.0302 val_loss:1.4219
+model is saved at epoch 74!![05/0075] | train_loss:1.4931 val_acc:46.5214 val_loss:1.4331
+[05/0076] | train_loss:1.4998 val_acc:44.9288 val_loss:1.4333
+[05/0077] | train_loss:1.4861 val_acc:44.6773 val_loss:1.4866
+[05/0078] | train_loss:1.5042 val_acc:46.8567 val_loss:1.445
+[05/0079] | train_loss:1.4921 val_acc:48.0302 val_loss:1.419
+[05/0080] | train_loss:1.4851 val_acc:47.3596 val_loss:1.4227
+[05/0081] | train_loss:1.4784 val_acc:48.8684 val_loss:1.4063
+model is saved at epoch 81!![05/0082] | train_loss:1.4845 val_acc:48.3655 val_loss:1.4129
+[05/0083] | train_loss:1.4859 val_acc:45.5155 val_loss:1.4402
+[05/0084] | train_loss:1.4758 val_acc:48.3655 val_loss:1.4127
+[05/0085] | train_loss:1.4858 val_acc:48.5331 val_loss:1.3987
+[05/0086] | train_loss:1.4806 val_acc:47.192 val_loss:1.4234
+[05/0087] | train_loss:1.4836 val_acc:47.8625 val_loss:1.4245
+[05/0088] | train_loss:1.4836 val_acc:47.9464 val_loss:1.3974
+[05/0089] | train_loss:1.4854 val_acc:46.8567 val_loss:1.4368
+[05/0090] | train_loss:1.4876 val_acc:47.3596 val_loss:1.4289
+[05/0091] | train_loss:1.4835 val_acc:46.7728 val_loss:1.4248
+[05/0092] | train_loss:1.4854 val_acc:47.3596 val_loss:1.4196
+[05/0093] | train_loss:1.4761 val_acc:46.6052 val_loss:1.407
+[05/0094] | train_loss:1.4719 val_acc:48.3655 val_loss:1.3956
+[05/0095] | train_loss:1.4714 val_acc:47.9464 val_loss:1.4175
+[05/0096] | train_loss:1.4766 val_acc:47.192 val_loss:1.4126
+[05/0097] | train_loss:1.4772 val_acc:45.767 val_loss:1.4507
+[05/0098] | train_loss:1.4688 val_acc:48.6169 val_loss:1.4144
+[05/0099] | train_loss:1.4673 val_acc:48.7846 val_loss:1.4083
+[05/0100] | train_loss:1.4725 val_acc:48.7008 val_loss:1.3996
+[05/0101] | train_loss:1.488 val_acc:47.3596 val_loss:1.4328
+[05/0102] | train_loss:1.4732 val_acc:46.9405 val_loss:1.4327
+[05/0103] | train_loss:1.4691 val_acc:47.8625 val_loss:1.4269
+[05/0104] | train_loss:1.4646 val_acc:47.3596 val_loss:1.4276
+[05/0105] | train_loss:1.4614 val_acc:48.0302 val_loss:1.413
+[05/0106] | train_loss:1.4787 val_acc:47.192 val_loss:1.4133
+[05/0107] | train_loss:1.4641 val_acc:48.2816 val_loss:1.4082
+[05/0108] | train_loss:1.4628 val_acc:47.0243 val_loss:1.3965
+[05/0109] | train_loss:1.4658 val_acc:47.7787 val_loss:1.4146
+[05/0110] | train_loss:1.4736 val_acc:48.1978 val_loss:1.4036
+[05/0111] | train_loss:1.4586 val_acc:47.2758 val_loss:1.4157
+[05/0112] | train_loss:1.4676 val_acc:46.5214 val_loss:1.4518
+[05/0113] | train_loss:1.4781 val_acc:48.2816 val_loss:1.385
+[05/0114] | train_loss:1.4625 val_acc:47.0243 val_loss:1.4281
+[05/0115] | train_loss:1.4616 val_acc:45.767 val_loss:1.463
+[05/0116] | train_loss:1.4558 val_acc:47.7787 val_loss:1.4144
+[05/0117] | train_loss:1.4604 val_acc:47.5272 val_loss:1.3961
+[05/0118] | train_loss:1.4561 val_acc:47.3596 val_loss:1.4131
+[05/0119] | train_loss:1.466 val_acc:47.8625 val_loss:1.4165
+[05/0120] | train_loss:1.4592 val_acc:48.1978 val_loss:1.4127
+[05/0121] | train_loss:1.4567 val_acc:49.1199 val_loss:1.4085
+model is saved at epoch 121!![05/0122] | train_loss:1.464 val_acc:45.767 val_loss:1.4248
+[05/0123] | train_loss:1.4699 val_acc:46.1023 val_loss:1.472
+[05/0124] | train_loss:1.4722 val_acc:47.6111 val_loss:1.4238
+[05/0125] | train_loss:1.46 val_acc:47.2758 val_loss:1.4187
+[05/0126] | train_loss:1.448 val_acc:47.6949 val_loss:1.4213
+[05/0127] | train_loss:1.4614 val_acc:48.3655 val_loss:1.4143
+[05/0128] | train_loss:1.46 val_acc:48.4493 val_loss:1.4185
+[05/0129] | train_loss:1.4498 val_acc:48.114 val_loss:1.4093
+[05/0130] | train_loss:1.443 val_acc:47.4434 val_loss:1.4385
+[05/0131] | train_loss:1.4481 val_acc:48.4493 val_loss:1.4246
+[05/0132] | train_loss:1.4623 val_acc:48.1978 val_loss:1.4204
+[05/0133] | train_loss:1.4658 val_acc:48.0302 val_loss:1.421
+[05/0134] | train_loss:1.4475 val_acc:48.114 val_loss:1.4213
+[05/0135] | train_loss:1.4524 val_acc:47.8625 val_loss:1.4235
+[05/0136] | train_loss:1.46 val_acc:46.8567 val_loss:1.4121
+[05/0137] | train_loss:1.4428 val_acc:47.7787 val_loss:1.4252
+[05/0138] | train_loss:1.4556 val_acc:46.5214 val_loss:1.4389
+[05/0139] | train_loss:1.4494 val_acc:47.7787 val_loss:1.4225
+[05/0140] | train_loss:1.4391 val_acc:47.8625 val_loss:1.4244
+[05/0141] | train_loss:1.4505 val_acc:48.114 val_loss:1.4265
+[05/0142] | train_loss:1.4458 val_acc:48.7846 val_loss:1.4124
+[05/0143] | train_loss:1.4536 val_acc:46.7728 val_loss:1.444
+[05/0144] | train_loss:1.4328 val_acc:47.4434 val_loss:1.4464
+[05/0145] | train_loss:1.4545 val_acc:46.2699 val_loss:1.4373
+[05/0146] | train_loss:1.4512 val_acc:46.1023 val_loss:1.456
+[05/0147] | train_loss:1.4479 val_acc:46.3537 val_loss:1.4176
+[05/0148] | train_loss:1.4302 val_acc:47.6949 val_loss:1.4099
+[05/0149] | train_loss:1.4386 val_acc:48.7846 val_loss:1.4185
+[05/0150] | train_loss:1.442 val_acc:47.7787 val_loss:1.4209
+[05/0151] | train_loss:1.4282 val_acc:48.4493 val_loss:1.4193
+[05/0152] | train_loss:1.4426 val_acc:48.6169 val_loss:1.4097
+[05/0153] | train_loss:1.438 val_acc:48.3655 val_loss:1.4119
+[05/0154] | train_loss:1.4438 val_acc:45.264 val_loss:1.4603
+[05/0155] | train_loss:1.4413 val_acc:47.3596 val_loss:1.4381
+[05/0156] | train_loss:1.4436 val_acc:47.8625 val_loss:1.4146
+[05/0157] | train_loss:1.4303 val_acc:46.8567 val_loss:1.4274
+[05/0158] | train_loss:1.4376 val_acc:48.7846 val_loss:1.4201
+[05/0159] | train_loss:1.4321 val_acc:45.5993 val_loss:1.4319
+[05/0160] | train_loss:1.4368 val_acc:48.4493 val_loss:1.3993
+[05/0161] | train_loss:1.4238 val_acc:49.3713 val_loss:1.3917
+model is saved at epoch 161!![05/0162] | train_loss:1.44 val_acc:48.8684 val_loss:1.4421
+[05/0163] | train_loss:1.4363 val_acc:48.8684 val_loss:1.3913
+[05/0164] | train_loss:1.4246 val_acc:48.8684 val_loss:1.4087
+[05/0165] | train_loss:1.4252 val_acc:47.6949 val_loss:1.4255
+[05/0166] | train_loss:1.4264 val_acc:46.3537 val_loss:1.4222
+[05/0167] | train_loss:1.4199 val_acc:47.9464 val_loss:1.4298
+[05/0168] | train_loss:1.4262 val_acc:48.5331 val_loss:1.4034
+[05/0169] | train_loss:1.4316 val_acc:48.0302 val_loss:1.4455
+[05/0170] | train_loss:1.4289 val_acc:48.6169 val_loss:1.4251
+[05/0171] | train_loss:1.4334 val_acc:47.1081 val_loss:1.4288
+[05/0172] | train_loss:1.4321 val_acc:47.9464 val_loss:1.4358
+[05/0173] | train_loss:1.4294 val_acc:47.9464 val_loss:1.4163
+[05/0174] | train_loss:1.4264 val_acc:48.4493 val_loss:1.4157
+[05/0175] | train_loss:1.4301 val_acc:45.6832 val_loss:1.4433
+[05/0176] | train_loss:1.429 val_acc:48.7008 val_loss:1.4093
+[05/0177] | train_loss:1.4246 val_acc:47.7787 val_loss:1.4105
+[05/0178] | train_loss:1.4156 val_acc:48.1978 val_loss:1.4034
+[05/0179] | train_loss:1.4236 val_acc:48.114 val_loss:1.3965
+[05/0180] | train_loss:1.4226 val_acc:49.539 val_loss:1.3983
+model is saved at epoch 180!![05/0181] | train_loss:1.4223 val_acc:48.3655 val_loss:1.4088
+[05/0182] | train_loss:1.4049 val_acc:48.114 val_loss:1.4257
+[05/0183] | train_loss:1.4215 val_acc:47.9464 val_loss:1.4279
+[05/0184] | train_loss:1.4212 val_acc:47.6111 val_loss:1.4226
+[05/0185] | train_loss:1.43 val_acc:47.5272 val_loss:1.427
+[05/0186] | train_loss:1.4247 val_acc:47.192 val_loss:1.4177
+[05/0187] | train_loss:1.4128 val_acc:48.1978 val_loss:1.4073
+[05/0188] | train_loss:1.4293 val_acc:46.7728 val_loss:1.435
+[05/0189] | train_loss:1.4215 val_acc:48.6169 val_loss:1.3927
+[05/0190] | train_loss:1.4098 val_acc:48.3655 val_loss:1.4165
+[05/0191] | train_loss:1.417 val_acc:45.0126 val_loss:1.4459
+[05/0192] | train_loss:1.4152 val_acc:47.3596 val_loss:1.4188
+[05/0193] | train_loss:1.4176 val_acc:46.8567 val_loss:1.4442
+[05/0194] | train_loss:1.4193 val_acc:48.6169 val_loss:1.4068
+[05/0195] | train_loss:1.4124 val_acc:45.9346 val_loss:1.4276
+[05/0196] | train_loss:1.4152 val_acc:46.6052 val_loss:1.4433
+[05/0197] | train_loss:1.4166 val_acc:48.4493 val_loss:1.4093
+[05/0198] | train_loss:1.4251 val_acc:47.6949 val_loss:1.4265
+[05/0199] | train_loss:1.4113 val_acc:46.9405 val_loss:1.4323
+[05/0200] | train_loss:1.4301 val_acc:48.2816 val_loss:1.3942
+[05/0201] | train_loss:1.4142 val_acc:46.9405 val_loss:1.4392
+[05/0202] | train_loss:1.4181 val_acc:47.9464 val_loss:1.4286
+[05/0203] | train_loss:1.415 val_acc:47.2758 val_loss:1.4375
+[05/0204] | train_loss:1.4079 val_acc:47.8625 val_loss:1.4389
+[05/0205] | train_loss:1.4139 val_acc:48.0302 val_loss:1.4355
+[05/0206] | train_loss:1.4026 val_acc:46.8567 val_loss:1.4322
+[05/0207] | train_loss:1.4011 val_acc:47.6949 val_loss:1.4321
+[05/0208] | train_loss:1.4035 val_acc:47.8625 val_loss:1.4278
+[05/0209] | train_loss:1.4086 val_acc:48.1978 val_loss:1.426
+[05/0210] | train_loss:1.4048 val_acc:48.9522 val_loss:1.4082
+[05/0211] | train_loss:1.411 val_acc:47.9464 val_loss:1.4519
+[05/0212] | train_loss:1.4158 val_acc:48.4493 val_loss:1.404
+[05/0213] | train_loss:1.3954 val_acc:48.7846 val_loss:1.4281
+[05/0214] | train_loss:1.3971 val_acc:47.5272 val_loss:1.4289
+[05/0215] | train_loss:1.4122 val_acc:47.0243 val_loss:1.4379
+[05/0216] | train_loss:1.4099 val_acc:47.7787 val_loss:1.4234
+[05/0217] | train_loss:1.4112 val_acc:49.036 val_loss:1.407
+[05/0218] | train_loss:1.402 val_acc:48.0302 val_loss:1.4263
+[05/0219] | train_loss:1.4012 val_acc:47.2758 val_loss:1.4214
+[05/0220] | train_loss:1.3988 val_acc:45.5993 val_loss:1.4702
+[05/0221] | train_loss:1.4178 val_acc:46.689 val_loss:1.4252
+[05/0222] | train_loss:1.4069 val_acc:48.2816 val_loss:1.4177
+[05/0223] | train_loss:1.391 val_acc:47.2758 val_loss:1.4391
+[05/0224] | train_loss:1.406 val_acc:47.6111 val_loss:1.439
+[05/0225] | train_loss:1.3959 val_acc:47.9464 val_loss:1.4434
+[05/0226] | train_loss:1.399 val_acc:48.7008 val_loss:1.4324
+[05/0227] | train_loss:1.3932 val_acc:45.6832 val_loss:1.4711
+[05/0228] | train_loss:1.405 val_acc:46.5214 val_loss:1.4501
+[05/0229] | train_loss:1.3922 val_acc:49.036 val_loss:1.4201
+[05/0230] | train_loss:1.4053 val_acc:45.8508 val_loss:1.4506
+[05/0231] | train_loss:1.4151 val_acc:45.8508 val_loss:1.4556
+Fold: [5/10] Test is finish !! 
+ Test Metrics are: test_acc:50.6287 test_loss:1.3551fold [5/10] is start!!
+[06/0001] | train_loss:2.2103 val_acc:20.2012 val_loss:2.2758
+model is saved at epoch 1!![06/0002] | train_loss:2.054 val_acc:29.1702 val_loss:1.9505
+model is saved at epoch 2!![06/0003] | train_loss:1.9976 val_acc:30.176 val_loss:1.8603
+model is saved at epoch 3!![06/0004] | train_loss:1.955 val_acc:32.6069 val_loss:1.82
+model is saved at epoch 4!![06/0005] | train_loss:1.9306 val_acc:33.6966 val_loss:1.7835
+model is saved at epoch 5!![06/0006] | train_loss:1.898 val_acc:32.8583 val_loss:1.8001
+[06/0007] | train_loss:1.8819 val_acc:35.2892 val_loss:1.7626
+model is saved at epoch 7!![06/0008] | train_loss:1.8641 val_acc:35.6245 val_loss:1.7045
+model is saved at epoch 8!![06/0009] | train_loss:1.8496 val_acc:35.7083 val_loss:1.6734
+model is saved at epoch 9!![06/0010] | train_loss:1.8284 val_acc:35.1215 val_loss:1.6788
+[06/0011] | train_loss:1.8188 val_acc:38.3906 val_loss:1.6486
+model is saved at epoch 11!![06/0012] | train_loss:1.8027 val_acc:38.4744 val_loss:1.603
+model is saved at epoch 12!![06/0013] | train_loss:1.7809 val_acc:36.8818 val_loss:1.6211
+[06/0014] | train_loss:1.7582 val_acc:39.0612 val_loss:1.5802
+model is saved at epoch 14!![06/0015] | train_loss:1.7474 val_acc:40.4862 val_loss:1.5871
+model is saved at epoch 15!![06/0016] | train_loss:1.7586 val_acc:39.8156 val_loss:1.5648
+[06/0017] | train_loss:1.7311 val_acc:41.0729 val_loss:1.5414
+model is saved at epoch 17!![06/0018] | train_loss:1.7102 val_acc:40.2347 val_loss:1.5496
+[06/0019] | train_loss:1.7176 val_acc:39.9832 val_loss:1.5907
+[06/0020] | train_loss:1.7121 val_acc:38.3906 val_loss:1.5606
+[06/0021] | train_loss:1.702 val_acc:41.1567 val_loss:1.5303
+model is saved at epoch 21!![06/0022] | train_loss:1.6921 val_acc:39.9832 val_loss:1.5246
+[06/0023] | train_loss:1.6829 val_acc:41.1567 val_loss:1.5314
+[06/0024] | train_loss:1.6769 val_acc:44.5096 val_loss:1.4903
+model is saved at epoch 24!![06/0025] | train_loss:1.696 val_acc:40.8215 val_loss:1.5451
+[06/0026] | train_loss:1.6878 val_acc:41.5759 val_loss:1.5187
+[06/0027] | train_loss:1.6643 val_acc:41.6597 val_loss:1.5292
+[06/0028] | train_loss:1.6645 val_acc:45.9346 val_loss:1.472
+model is saved at epoch 28!![06/0029] | train_loss:1.6622 val_acc:43.6714 val_loss:1.5001
+[06/0030] | train_loss:1.6487 val_acc:42.2464 val_loss:1.5052
+[06/0031] | train_loss:1.6619 val_acc:42.8332 val_loss:1.4913
+[06/0032] | train_loss:1.6565 val_acc:42.5817 val_loss:1.4821
+[06/0033] | train_loss:1.657 val_acc:42.2464 val_loss:1.5075
+[06/0034] | train_loss:1.651 val_acc:45.6832 val_loss:1.4663
+[06/0035] | train_loss:1.649 val_acc:43.6714 val_loss:1.4908
+[06/0036] | train_loss:1.6387 val_acc:43.4199 val_loss:1.4876
+[06/0037] | train_loss:1.6329 val_acc:45.264 val_loss:1.4876
+[06/0038] | train_loss:1.633 val_acc:44.6773 val_loss:1.4731
+[06/0039] | train_loss:1.6262 val_acc:46.4376 val_loss:1.4444
+model is saved at epoch 39!![06/0040] | train_loss:1.6253 val_acc:45.4317 val_loss:1.4795
+[06/0041] | train_loss:1.6227 val_acc:45.1802 val_loss:1.4581
+[06/0042] | train_loss:1.6207 val_acc:44.5096 val_loss:1.4686
+[06/0043] | train_loss:1.6327 val_acc:44.342 val_loss:1.4759
+[06/0044] | train_loss:1.6316 val_acc:45.0964 val_loss:1.4817
+[06/0045] | train_loss:1.6344 val_acc:46.2699 val_loss:1.4891
+[06/0046] | train_loss:1.6094 val_acc:46.4376 val_loss:1.4715
+[06/0047] | train_loss:1.6183 val_acc:47.2758 val_loss:1.4565
+model is saved at epoch 47!![06/0048] | train_loss:1.6135 val_acc:45.8508 val_loss:1.4369
+[06/0049] | train_loss:1.6034 val_acc:44.4258 val_loss:1.4768
+[06/0050] | train_loss:1.6067 val_acc:47.3596 val_loss:1.4454
+model is saved at epoch 50!![06/0051] | train_loss:1.6102 val_acc:46.7728 val_loss:1.4487
+[06/0052] | train_loss:1.6103 val_acc:47.5272 val_loss:1.4508
+model is saved at epoch 52!![06/0053] | train_loss:1.6123 val_acc:45.4317 val_loss:1.4988
+[06/0054] | train_loss:1.6208 val_acc:47.1081 val_loss:1.4346
+[06/0055] | train_loss:1.6076 val_acc:47.3596 val_loss:1.4401
+[06/0056] | train_loss:1.5971 val_acc:47.192 val_loss:1.4489
+[06/0057] | train_loss:1.6077 val_acc:47.4434 val_loss:1.4534
+[06/0058] | train_loss:1.591 val_acc:47.3596 val_loss:1.4516
+[06/0059] | train_loss:1.5858 val_acc:47.6111 val_loss:1.4335
+model is saved at epoch 59!![06/0060] | train_loss:1.5955 val_acc:46.0184 val_loss:1.4869
+[06/0061] | train_loss:1.6067 val_acc:46.3537 val_loss:1.4599
+[06/0062] | train_loss:1.591 val_acc:47.6949 val_loss:1.4344
+model is saved at epoch 62!![06/0063] | train_loss:1.5841 val_acc:49.036 val_loss:1.4564
+model is saved at epoch 63!![06/0064] | train_loss:1.5828 val_acc:49.1199 val_loss:1.4075
+model is saved at epoch 64!![06/0065] | train_loss:1.596 val_acc:48.7846 val_loss:1.4206
+[06/0066] | train_loss:1.5809 val_acc:47.4434 val_loss:1.4266
+[06/0067] | train_loss:1.5811 val_acc:47.9464 val_loss:1.4357
+[06/0068] | train_loss:1.5772 val_acc:48.8684 val_loss:1.4205
+[06/0069] | train_loss:1.5898 val_acc:46.1861 val_loss:1.4432
+[06/0070] | train_loss:1.5836 val_acc:48.2816 val_loss:1.4249
+[06/0071] | train_loss:1.5913 val_acc:44.5935 val_loss:1.48
+[06/0072] | train_loss:1.5914 val_acc:48.8684 val_loss:1.4572
+[06/0073] | train_loss:1.5862 val_acc:47.4434 val_loss:1.4225
+[06/0074] | train_loss:1.5805 val_acc:48.7846 val_loss:1.4112
+[06/0075] | train_loss:1.5662 val_acc:45.9346 val_loss:1.4639
+[06/0076] | train_loss:1.5592 val_acc:47.3596 val_loss:1.4223
+[06/0077] | train_loss:1.5702 val_acc:48.8684 val_loss:1.4209
+[06/0078] | train_loss:1.571 val_acc:49.036 val_loss:1.398
+[06/0079] | train_loss:1.5649 val_acc:49.6228 val_loss:1.3982
+model is saved at epoch 79!![06/0080] | train_loss:1.5592 val_acc:48.7008 val_loss:1.4138
+[06/0081] | train_loss:1.5821 val_acc:48.4493 val_loss:1.4131
+[06/0082] | train_loss:1.5616 val_acc:46.8567 val_loss:1.4419
+[06/0083] | train_loss:1.5659 val_acc:49.2037 val_loss:1.4236
+[06/0084] | train_loss:1.5615 val_acc:47.9464 val_loss:1.4228
+[06/0085] | train_loss:1.5631 val_acc:48.7846 val_loss:1.4068
+[06/0086] | train_loss:1.5546 val_acc:47.9464 val_loss:1.4195
+[06/0087] | train_loss:1.5738 val_acc:47.8625 val_loss:1.4352
+[06/0088] | train_loss:1.5602 val_acc:48.3655 val_loss:1.4183
+[06/0089] | train_loss:1.5431 val_acc:48.2816 val_loss:1.425
+[06/0090] | train_loss:1.5688 val_acc:47.9464 val_loss:1.4419
+[06/0091] | train_loss:1.5564 val_acc:48.0302 val_loss:1.4138
+[06/0092] | train_loss:1.555 val_acc:48.0302 val_loss:1.4422
+[06/0093] | train_loss:1.5726 val_acc:48.6169 val_loss:1.4155
+[06/0094] | train_loss:1.5546 val_acc:47.0243 val_loss:1.4733
+[06/0095] | train_loss:1.5602 val_acc:47.8625 val_loss:1.4059
+[06/0096] | train_loss:1.552 val_acc:48.8684 val_loss:1.4076
+[06/0097] | train_loss:1.5497 val_acc:49.036 val_loss:1.4115
+[06/0098] | train_loss:1.5507 val_acc:48.6169 val_loss:1.4208
+[06/0099] | train_loss:1.5519 val_acc:48.9522 val_loss:1.4028
+[06/0100] | train_loss:1.5616 val_acc:49.7066 val_loss:1.3958
+model is saved at epoch 100!![06/0101] | train_loss:1.5452 val_acc:48.3655 val_loss:1.4092
+[06/0102] | train_loss:1.5598 val_acc:47.4434 val_loss:1.4027
+[06/0103] | train_loss:1.5418 val_acc:48.7846 val_loss:1.4032
+[06/0104] | train_loss:1.5628 val_acc:48.114 val_loss:1.408
+[06/0105] | train_loss:1.5569 val_acc:47.9464 val_loss:1.3991
+[06/0106] | train_loss:1.5523 val_acc:49.4552 val_loss:1.408
+[06/0107] | train_loss:1.5487 val_acc:49.3713 val_loss:1.4031
+[06/0108] | train_loss:1.5458 val_acc:49.1199 val_loss:1.3953
+[06/0109] | train_loss:1.542 val_acc:49.8743 val_loss:1.4085
+model is saved at epoch 109!![06/0110] | train_loss:1.5398 val_acc:48.1978 val_loss:1.4229
+[06/0111] | train_loss:1.5353 val_acc:47.5272 val_loss:1.4325
+[06/0112] | train_loss:1.5299 val_acc:48.3655 val_loss:1.4235
+[06/0113] | train_loss:1.5515 val_acc:48.7008 val_loss:1.39
+[06/0114] | train_loss:1.5353 val_acc:48.7008 val_loss:1.4164
+[06/0115] | train_loss:1.5365 val_acc:49.6228 val_loss:1.3918
+[06/0116] | train_loss:1.5425 val_acc:48.6169 val_loss:1.4139
+[06/0117] | train_loss:1.5603 val_acc:48.114 val_loss:1.4261
+[06/0118] | train_loss:1.5433 val_acc:48.5331 val_loss:1.4287
+[06/0119] | train_loss:1.5394 val_acc:48.0302 val_loss:1.4277
+[06/0120] | train_loss:1.533 val_acc:47.9464 val_loss:1.4233
+[06/0121] | train_loss:1.5397 val_acc:48.7846 val_loss:1.3928
+[06/0122] | train_loss:1.5296 val_acc:47.6111 val_loss:1.4222
+[06/0123] | train_loss:1.5311 val_acc:49.2037 val_loss:1.4264
+[06/0124] | train_loss:1.5337 val_acc:49.6228 val_loss:1.3987
+[06/0125] | train_loss:1.5177 val_acc:48.9522 val_loss:1.3803
+[06/0126] | train_loss:1.5311 val_acc:48.6169 val_loss:1.4491
+[06/0127] | train_loss:1.534 val_acc:48.3655 val_loss:1.4309
+[06/0128] | train_loss:1.5333 val_acc:48.7008 val_loss:1.4137
+[06/0129] | train_loss:1.5256 val_acc:46.7728 val_loss:1.4361
+[06/0130] | train_loss:1.5271 val_acc:49.3713 val_loss:1.4105
+[06/0131] | train_loss:1.5111 val_acc:48.4493 val_loss:1.4272
+[06/0132] | train_loss:1.5169 val_acc:49.2875 val_loss:1.3864
+[06/0133] | train_loss:1.5241 val_acc:49.4552 val_loss:1.4098
+[06/0134] | train_loss:1.5228 val_acc:50.2934 val_loss:1.3807
+model is saved at epoch 134!![06/0135] | train_loss:1.5104 val_acc:49.1199 val_loss:1.3914
+[06/0136] | train_loss:1.5235 val_acc:50.0419 val_loss:1.3879
+[06/0137] | train_loss:1.5214 val_acc:49.2875 val_loss:1.4166
+[06/0138] | train_loss:1.5056 val_acc:47.1081 val_loss:1.4086
+[06/0139] | train_loss:1.5085 val_acc:48.4493 val_loss:1.4151
+[06/0140] | train_loss:1.5136 val_acc:47.8625 val_loss:1.4287
+[06/0141] | train_loss:1.5195 val_acc:49.2875 val_loss:1.395
+[06/0142] | train_loss:1.5146 val_acc:49.539 val_loss:1.4032
+[06/0143] | train_loss:1.5052 val_acc:48.7008 val_loss:1.412
+[06/0144] | train_loss:1.5154 val_acc:48.8684 val_loss:1.4053
+[06/0145] | train_loss:1.4979 val_acc:49.2037 val_loss:1.3941
+[06/0146] | train_loss:1.5075 val_acc:46.9405 val_loss:1.4283
+[06/0147] | train_loss:1.5177 val_acc:49.036 val_loss:1.3825
+[06/0148] | train_loss:1.5043 val_acc:49.1199 val_loss:1.3879
+[06/0149] | train_loss:1.5118 val_acc:50.2096 val_loss:1.4028
+[06/0150] | train_loss:1.5151 val_acc:48.2816 val_loss:1.3942
+[06/0151] | train_loss:1.5014 val_acc:48.4493 val_loss:1.4034
+[06/0152] | train_loss:1.5032 val_acc:49.4552 val_loss:1.3885
+[06/0153] | train_loss:1.5052 val_acc:48.6169 val_loss:1.4075
+[06/0154] | train_loss:1.496 val_acc:48.5331 val_loss:1.3752
+[06/0155] | train_loss:1.5071 val_acc:47.4434 val_loss:1.4204
+[06/0156] | train_loss:1.5133 val_acc:48.5331 val_loss:1.4359
+[06/0157] | train_loss:1.502 val_acc:49.036 val_loss:1.4004
+[06/0158] | train_loss:1.4968 val_acc:49.4552 val_loss:1.4036
+[06/0159] | train_loss:1.5081 val_acc:50.7125 val_loss:1.382
+model is saved at epoch 159!![06/0160] | train_loss:1.5022 val_acc:48.5331 val_loss:1.4221
+[06/0161] | train_loss:1.4961 val_acc:47.1081 val_loss:1.4223
+[06/0162] | train_loss:1.5079 val_acc:48.9522 val_loss:1.4126
+[06/0163] | train_loss:1.5094 val_acc:48.6169 val_loss:1.4148
+[06/0164] | train_loss:1.4975 val_acc:48.114 val_loss:1.4283
+[06/0165] | train_loss:1.5036 val_acc:47.8625 val_loss:1.4231
+[06/0166] | train_loss:1.4976 val_acc:49.6228 val_loss:1.3751
+[06/0167] | train_loss:1.5108 val_acc:50.5448 val_loss:1.4025
+[06/0168] | train_loss:1.4869 val_acc:47.9464 val_loss:1.4189
+[06/0169] | train_loss:1.4852 val_acc:47.2758 val_loss:1.4037
+[06/0170] | train_loss:1.4869 val_acc:48.6169 val_loss:1.4172
+[06/0171] | train_loss:1.4951 val_acc:49.9581 val_loss:1.4033
+[06/0172] | train_loss:1.5008 val_acc:48.114 val_loss:1.4178
+[06/0173] | train_loss:1.4912 val_acc:48.6169 val_loss:1.376
+[06/0174] | train_loss:1.4867 val_acc:49.4552 val_loss:1.4018
+[06/0175] | train_loss:1.4838 val_acc:48.7846 val_loss:1.3907
+[06/0176] | train_loss:1.4996 val_acc:48.7846 val_loss:1.3879
+[06/0177] | train_loss:1.4798 val_acc:49.2875 val_loss:1.3876
+[06/0178] | train_loss:1.4714 val_acc:48.7846 val_loss:1.3805
+[06/0179] | train_loss:1.486 val_acc:48.8684 val_loss:1.4133
+[06/0180] | train_loss:1.4879 val_acc:49.036 val_loss:1.4016
+[06/0181] | train_loss:1.4828 val_acc:48.4493 val_loss:1.3984
+[06/0182] | train_loss:1.4746 val_acc:48.8684 val_loss:1.4146
+[06/0183] | train_loss:1.4786 val_acc:48.7846 val_loss:1.4019
+[06/0184] | train_loss:1.4953 val_acc:47.6949 val_loss:1.4234
+[06/0185] | train_loss:1.4813 val_acc:47.2758 val_loss:1.4259
+[06/0186] | train_loss:1.4927 val_acc:48.1978 val_loss:1.3989
+[06/0187] | train_loss:1.4916 val_acc:48.7008 val_loss:1.3923
+[06/0188] | train_loss:1.4728 val_acc:50.0419 val_loss:1.3837
+[06/0189] | train_loss:1.4836 val_acc:49.4552 val_loss:1.3961
+[06/0190] | train_loss:1.4866 val_acc:49.2037 val_loss:1.3941
+[06/0191] | train_loss:1.4798 val_acc:49.539 val_loss:1.3615
+[06/0192] | train_loss:1.4717 val_acc:49.2037 val_loss:1.415
+[06/0193] | train_loss:1.4727 val_acc:49.4552 val_loss:1.3675
+[06/0194] | train_loss:1.4717 val_acc:49.7904 val_loss:1.3831
+[06/0195] | train_loss:1.4683 val_acc:49.036 val_loss:1.3845
+[06/0196] | train_loss:1.4712 val_acc:50.2096 val_loss:1.3976
+[06/0197] | train_loss:1.4665 val_acc:49.1199 val_loss:1.4012
+[06/0198] | train_loss:1.4681 val_acc:48.3655 val_loss:1.4249
+[06/0199] | train_loss:1.4769 val_acc:49.4552 val_loss:1.366
+[06/0200] | train_loss:1.4774 val_acc:50.6287 val_loss:1.3774
+[06/0201] | train_loss:1.4747 val_acc:48.5331 val_loss:1.4299
+[06/0202] | train_loss:1.4761 val_acc:49.2037 val_loss:1.4
+[06/0203] | train_loss:1.4721 val_acc:48.0302 val_loss:1.4291
+[06/0204] | train_loss:1.4725 val_acc:48.9522 val_loss:1.3761
+[06/0205] | train_loss:1.4543 val_acc:49.036 val_loss:1.3904
+[06/0206] | train_loss:1.4721 val_acc:49.2875 val_loss:1.3991
+[06/0207] | train_loss:1.4602 val_acc:48.7846 val_loss:1.3896
+[06/0208] | train_loss:1.464 val_acc:49.2875 val_loss:1.3804
+[06/0209] | train_loss:1.4577 val_acc:49.2875 val_loss:1.3845
+[06/0210] | train_loss:1.4642 val_acc:49.539 val_loss:1.3996
+Fold: [6/10] Test is finish !! 
+ Test Metrics are: test_acc:47.8625 test_loss:1.4061fold [6/10] is start!!
+[07/0001] | train_loss:2.207 val_acc:22.5482 val_loss:2.2682
+model is saved at epoch 1!![07/0002] | train_loss:2.017 val_acc:32.2716 val_loss:1.8775
+model is saved at epoch 2!![07/0003] | train_loss:1.9488 val_acc:33.026 val_loss:1.8138
+model is saved at epoch 3!![07/0004] | train_loss:1.8977 val_acc:32.6907 val_loss:1.7862
+[07/0005] | train_loss:1.8534 val_acc:35.8759 val_loss:1.7009
+model is saved at epoch 5!![07/0006] | train_loss:1.822 val_acc:36.0436 val_loss:1.6914
+model is saved at epoch 6!![07/0007] | train_loss:1.7967 val_acc:39.145 val_loss:1.6413
+model is saved at epoch 7!![07/0008] | train_loss:1.7677 val_acc:41.4082 val_loss:1.5869
+model is saved at epoch 8!![07/0009] | train_loss:1.7496 val_acc:40.4023 val_loss:1.6224
+[07/0010] | train_loss:1.7232 val_acc:43.0008 val_loss:1.5761
+model is saved at epoch 10!![07/0011] | train_loss:1.7069 val_acc:40.9053 val_loss:1.566
+[07/0012] | train_loss:1.6864 val_acc:41.1567 val_loss:1.5626
+[07/0013] | train_loss:1.6688 val_acc:42.8332 val_loss:1.5107
+[07/0014] | train_loss:1.6413 val_acc:40.9053 val_loss:1.5649
+[07/0015] | train_loss:1.6419 val_acc:44.1743 val_loss:1.4913
+model is saved at epoch 15!![07/0016] | train_loss:1.6175 val_acc:43.0847 val_loss:1.4974
+[07/0017] | train_loss:1.6261 val_acc:40.1509 val_loss:1.5305
+[07/0018] | train_loss:1.6207 val_acc:43.5876 val_loss:1.4733
+[07/0019] | train_loss:1.5982 val_acc:44.1743 val_loss:1.468
+[07/0020] | train_loss:1.5933 val_acc:43.8391 val_loss:1.4746
+[07/0021] | train_loss:1.5887 val_acc:44.9288 val_loss:1.4733
+model is saved at epoch 21!![07/0022] | train_loss:1.5869 val_acc:42.4979 val_loss:1.5294
+[07/0023] | train_loss:1.5911 val_acc:40.9891 val_loss:1.5848
+[07/0024] | train_loss:1.5741 val_acc:44.4258 val_loss:1.444
+[07/0025] | train_loss:1.5845 val_acc:46.9405 val_loss:1.4336
+model is saved at epoch 25!![07/0026] | train_loss:1.5623 val_acc:45.8508 val_loss:1.4437
+[07/0027] | train_loss:1.5585 val_acc:45.5993 val_loss:1.4193
+[07/0028] | train_loss:1.5548 val_acc:45.5993 val_loss:1.417
+[07/0029] | train_loss:1.5683 val_acc:47.4434 val_loss:1.4159
+model is saved at epoch 29!![07/0030] | train_loss:1.5611 val_acc:45.0964 val_loss:1.4481
+[07/0031] | train_loss:1.5755 val_acc:45.5993 val_loss:1.4467
+[07/0032] | train_loss:1.5519 val_acc:46.4376 val_loss:1.4545
+[07/0033] | train_loss:1.5538 val_acc:45.264 val_loss:1.4174
+[07/0034] | train_loss:1.5479 val_acc:44.8449 val_loss:1.4149
+[07/0035] | train_loss:1.5363 val_acc:47.0243 val_loss:1.4168
+[07/0036] | train_loss:1.5509 val_acc:45.5155 val_loss:1.422
+[07/0037] | train_loss:1.5411 val_acc:46.2699 val_loss:1.4154
+[07/0038] | train_loss:1.528 val_acc:46.689 val_loss:1.4173
+[07/0039] | train_loss:1.5431 val_acc:46.7728 val_loss:1.4168
+[07/0040] | train_loss:1.5293 val_acc:46.0184 val_loss:1.3986
+[07/0041] | train_loss:1.5313 val_acc:46.689 val_loss:1.4154
+[07/0042] | train_loss:1.5351 val_acc:45.264 val_loss:1.4145
+[07/0043] | train_loss:1.5256 val_acc:44.9288 val_loss:1.4356
+[07/0044] | train_loss:1.5137 val_acc:46.689 val_loss:1.4348
+[07/0045] | train_loss:1.5177 val_acc:47.4434 val_loss:1.4056
+[07/0046] | train_loss:1.5159 val_acc:46.7728 val_loss:1.3903
+[07/0047] | train_loss:1.4991 val_acc:46.4376 val_loss:1.435
+[07/0048] | train_loss:1.5065 val_acc:47.1081 val_loss:1.4029
+[07/0049] | train_loss:1.5016 val_acc:46.4376 val_loss:1.423
+[07/0050] | train_loss:1.4989 val_acc:46.1023 val_loss:1.3922
+[07/0051] | train_loss:1.5038 val_acc:47.6949 val_loss:1.377
+model is saved at epoch 51!![07/0052] | train_loss:1.5013 val_acc:46.2699 val_loss:1.4118
+[07/0053] | train_loss:1.529 val_acc:46.1023 val_loss:1.424
+[07/0054] | train_loss:1.5128 val_acc:47.0243 val_loss:1.3881
+[07/0055] | train_loss:1.5056 val_acc:47.2758 val_loss:1.3803
+[07/0056] | train_loss:1.4815 val_acc:46.9405 val_loss:1.3844
+[07/0057] | train_loss:1.4921 val_acc:47.8625 val_loss:1.3769
+model is saved at epoch 57!![07/0058] | train_loss:1.4841 val_acc:45.264 val_loss:1.4662
+[07/0059] | train_loss:1.509 val_acc:46.3537 val_loss:1.3893
+[07/0060] | train_loss:1.4883 val_acc:44.9288 val_loss:1.4465
+[07/0061] | train_loss:1.4839 val_acc:47.6111 val_loss:1.381
+[07/0062] | train_loss:1.4802 val_acc:47.4434 val_loss:1.3693
+[07/0063] | train_loss:1.4909 val_acc:47.192 val_loss:1.3835
+[07/0064] | train_loss:1.4772 val_acc:47.4434 val_loss:1.3903
+[07/0065] | train_loss:1.4742 val_acc:47.4434 val_loss:1.3851
+[07/0066] | train_loss:1.4728 val_acc:48.0302 val_loss:1.388
+model is saved at epoch 66!![07/0067] | train_loss:1.4922 val_acc:46.1023 val_loss:1.4037
+[07/0068] | train_loss:1.4765 val_acc:47.0243 val_loss:1.3779
+[07/0069] | train_loss:1.4765 val_acc:48.1978 val_loss:1.374
+model is saved at epoch 69!![07/0070] | train_loss:1.473 val_acc:47.8625 val_loss:1.3755
+[07/0071] | train_loss:1.4913 val_acc:47.1081 val_loss:1.3926
+[07/0072] | train_loss:1.4906 val_acc:48.1978 val_loss:1.3706
+[07/0073] | train_loss:1.4724 val_acc:47.6949 val_loss:1.3781
+[07/0074] | train_loss:1.477 val_acc:47.6949 val_loss:1.3857
+[07/0075] | train_loss:1.4825 val_acc:47.192 val_loss:1.4109
+[07/0076] | train_loss:1.4897 val_acc:46.4376 val_loss:1.3824
+[07/0077] | train_loss:1.4856 val_acc:48.5331 val_loss:1.3748
+model is saved at epoch 77!![07/0078] | train_loss:1.473 val_acc:48.6169 val_loss:1.3797
+model is saved at epoch 78!![07/0079] | train_loss:1.4649 val_acc:46.6052 val_loss:1.3855
+[07/0080] | train_loss:1.4602 val_acc:48.6169 val_loss:1.3831
+[07/0081] | train_loss:1.4573 val_acc:46.6052 val_loss:1.3761
+[07/0082] | train_loss:1.462 val_acc:47.6949 val_loss:1.3737
+[07/0083] | train_loss:1.4643 val_acc:47.7787 val_loss:1.3788
+[07/0084] | train_loss:1.468 val_acc:47.3596 val_loss:1.3786
+[07/0085] | train_loss:1.4628 val_acc:48.7008 val_loss:1.3689
+model is saved at epoch 85!![07/0086] | train_loss:1.4603 val_acc:47.4434 val_loss:1.3625
+[07/0087] | train_loss:1.4603 val_acc:45.6832 val_loss:1.4044
+[07/0088] | train_loss:1.458 val_acc:48.2816 val_loss:1.3827
+[07/0089] | train_loss:1.4566 val_acc:46.8567 val_loss:1.3722
+[07/0090] | train_loss:1.4581 val_acc:46.5214 val_loss:1.3952
+[07/0091] | train_loss:1.4452 val_acc:48.8684 val_loss:1.3562
+model is saved at epoch 91!![07/0092] | train_loss:1.4653 val_acc:48.5331 val_loss:1.3759
+[07/0093] | train_loss:1.4534 val_acc:47.7787 val_loss:1.3836
+[07/0094] | train_loss:1.4431 val_acc:47.7787 val_loss:1.3605
+[07/0095] | train_loss:1.4529 val_acc:48.5331 val_loss:1.378
+[07/0096] | train_loss:1.4501 val_acc:48.0302 val_loss:1.37
+[07/0097] | train_loss:1.4433 val_acc:48.7008 val_loss:1.3754
+[07/0098] | train_loss:1.437 val_acc:47.4434 val_loss:1.3804
+[07/0099] | train_loss:1.442 val_acc:48.9522 val_loss:1.3681
+model is saved at epoch 99!![07/0100] | train_loss:1.4384 val_acc:48.4493 val_loss:1.3788
+[07/0101] | train_loss:1.4446 val_acc:47.5272 val_loss:1.3945
+[07/0102] | train_loss:1.4452 val_acc:47.9464 val_loss:1.3881
+[07/0103] | train_loss:1.4531 val_acc:47.3596 val_loss:1.3707
+[07/0104] | train_loss:1.454 val_acc:47.7787 val_loss:1.3691
+[07/0105] | train_loss:1.4459 val_acc:48.1978 val_loss:1.3531
+[07/0106] | train_loss:1.4488 val_acc:48.3655 val_loss:1.3864
+[07/0107] | train_loss:1.4339 val_acc:47.0243 val_loss:1.3878
+[07/0108] | train_loss:1.4377 val_acc:48.5331 val_loss:1.3839
+[07/0109] | train_loss:1.4284 val_acc:47.0243 val_loss:1.4045
+[07/0110] | train_loss:1.4334 val_acc:48.8684 val_loss:1.3743
+[07/0111] | train_loss:1.4371 val_acc:49.2037 val_loss:1.3754
+model is saved at epoch 111!![07/0112] | train_loss:1.4355 val_acc:48.8684 val_loss:1.3754
+[07/0113] | train_loss:1.4382 val_acc:48.0302 val_loss:1.3977
+[07/0114] | train_loss:1.4352 val_acc:49.1199 val_loss:1.3732
+[07/0115] | train_loss:1.4387 val_acc:48.7008 val_loss:1.3681
+[07/0116] | train_loss:1.4338 val_acc:49.4552 val_loss:1.3595
+model is saved at epoch 116!![07/0117] | train_loss:1.4324 val_acc:48.4493 val_loss:1.3725
+[07/0118] | train_loss:1.4315 val_acc:49.8743 val_loss:1.3473
+model is saved at epoch 118!![07/0119] | train_loss:1.4343 val_acc:49.3713 val_loss:1.3659
+[07/0120] | train_loss:1.4435 val_acc:48.1978 val_loss:1.3823
+[07/0121] | train_loss:1.4416 val_acc:48.4493 val_loss:1.3835
+[07/0122] | train_loss:1.432 val_acc:48.3655 val_loss:1.3906
+[07/0123] | train_loss:1.4256 val_acc:48.6169 val_loss:1.3664
+[07/0124] | train_loss:1.4302 val_acc:47.7787 val_loss:1.3903
+[07/0125] | train_loss:1.4438 val_acc:48.2816 val_loss:1.36
+[07/0126] | train_loss:1.4395 val_acc:47.7787 val_loss:1.3819
+[07/0127] | train_loss:1.4267 val_acc:47.5272 val_loss:1.3824
+[07/0128] | train_loss:1.4259 val_acc:48.6169 val_loss:1.3871
+[07/0129] | train_loss:1.4245 val_acc:49.1199 val_loss:1.4037
+[07/0130] | train_loss:1.4272 val_acc:48.5331 val_loss:1.3796
+[07/0131] | train_loss:1.4168 val_acc:48.7846 val_loss:1.3764
+[07/0132] | train_loss:1.423 val_acc:48.7008 val_loss:1.4003
+[07/0133] | train_loss:1.4246 val_acc:47.7787 val_loss:1.3666
+[07/0134] | train_loss:1.4233 val_acc:49.1199 val_loss:1.3812
+[07/0135] | train_loss:1.4224 val_acc:47.6111 val_loss:1.3536
+[07/0136] | train_loss:1.419 val_acc:48.6169 val_loss:1.379
+[07/0137] | train_loss:1.424 val_acc:48.0302 val_loss:1.3862
+[07/0138] | train_loss:1.4178 val_acc:47.7787 val_loss:1.4065
+[07/0139] | train_loss:1.4312 val_acc:47.6111 val_loss:1.3742
+[07/0140] | train_loss:1.4174 val_acc:48.3655 val_loss:1.3726
+[07/0141] | train_loss:1.4203 val_acc:46.5214 val_loss:1.3868
+[07/0142] | train_loss:1.4199 val_acc:48.2816 val_loss:1.375
+[07/0143] | train_loss:1.4231 val_acc:49.2875 val_loss:1.3639
+[07/0144] | train_loss:1.4186 val_acc:47.8625 val_loss:1.3853
+[07/0145] | train_loss:1.4325 val_acc:48.6169 val_loss:1.3731
+[07/0146] | train_loss:1.4221 val_acc:48.7008 val_loss:1.3853
+[07/0147] | train_loss:1.4225 val_acc:47.8625 val_loss:1.3765
+[07/0148] | train_loss:1.4077 val_acc:47.9464 val_loss:1.3793
+[07/0149] | train_loss:1.4111 val_acc:49.4552 val_loss:1.386
+[07/0150] | train_loss:1.4141 val_acc:48.7846 val_loss:1.3734
+[07/0151] | train_loss:1.4152 val_acc:47.8625 val_loss:1.401
+[07/0152] | train_loss:1.4108 val_acc:49.1199 val_loss:1.4318
+[07/0153] | train_loss:1.421 val_acc:47.9464 val_loss:1.388
+[07/0154] | train_loss:1.4117 val_acc:48.0302 val_loss:1.3731
+[07/0155] | train_loss:1.4186 val_acc:46.8567 val_loss:1.4151
+[07/0156] | train_loss:1.3974 val_acc:49.539 val_loss:1.3789
+[07/0157] | train_loss:1.4071 val_acc:49.2037 val_loss:1.3898
+[07/0158] | train_loss:1.4077 val_acc:48.7008 val_loss:1.3558
+[07/0159] | train_loss:1.4089 val_acc:47.8625 val_loss:1.4037
+[07/0160] | train_loss:1.4195 val_acc:49.7904 val_loss:1.365
+[07/0161] | train_loss:1.3998 val_acc:49.6228 val_loss:1.3648
+[07/0162] | train_loss:1.4103 val_acc:48.2816 val_loss:1.3556
+[07/0163] | train_loss:1.4065 val_acc:49.2875 val_loss:1.3534
+[07/0164] | train_loss:1.4081 val_acc:47.8625 val_loss:1.3925
+[07/0165] | train_loss:1.4005 val_acc:49.539 val_loss:1.3844
+[07/0166] | train_loss:1.4003 val_acc:48.7846 val_loss:1.3707
+[07/0167] | train_loss:1.396 val_acc:49.1199 val_loss:1.366
+[07/0168] | train_loss:1.4147 val_acc:48.7846 val_loss:1.3994
+[07/0169] | train_loss:1.4116 val_acc:47.3596 val_loss:1.3777
+Fold: [7/10] Test is finish !! 
+ Test Metrics are: test_acc:52.3889 test_loss:1.3085fold [7/10] is start!!
+[08/0001] | train_loss:2.2081 val_acc:21.8776 val_loss:2.3996
+model is saved at epoch 1!![08/0002] | train_loss:2.0006 val_acc:31.6848 val_loss:1.8949
+model is saved at epoch 2!![08/0003] | train_loss:1.9443 val_acc:36.1274 val_loss:1.7975
+model is saved at epoch 3!![08/0004] | train_loss:1.8969 val_acc:36.7142 val_loss:1.754
+model is saved at epoch 4!![08/0005] | train_loss:1.8762 val_acc:37.3847 val_loss:1.7418
+model is saved at epoch 5!![08/0006] | train_loss:1.8398 val_acc:36.7142 val_loss:1.7189
+[08/0007] | train_loss:1.8133 val_acc:38.1391 val_loss:1.7145
+model is saved at epoch 7!![08/0008] | train_loss:1.7997 val_acc:39.9832 val_loss:1.6526
+model is saved at epoch 8!![08/0009] | train_loss:1.7771 val_acc:36.9656 val_loss:1.6318
+[08/0010] | train_loss:1.7585 val_acc:41.1567 val_loss:1.6254
+model is saved at epoch 10!![08/0011] | train_loss:1.73 val_acc:39.8994 val_loss:1.5939
+[08/0012] | train_loss:1.7203 val_acc:43.3361 val_loss:1.5636
+model is saved at epoch 12!![08/0013] | train_loss:1.6931 val_acc:41.9111 val_loss:1.586
+[08/0014] | train_loss:1.6924 val_acc:45.767 val_loss:1.5045
+model is saved at epoch 14!![08/0015] | train_loss:1.6705 val_acc:43.4199 val_loss:1.5099
+[08/0016] | train_loss:1.6481 val_acc:46.1023 val_loss:1.4909
+model is saved at epoch 16!![08/0017] | train_loss:1.6358 val_acc:44.0067 val_loss:1.499
+[08/0018] | train_loss:1.6227 val_acc:48.4493 val_loss:1.4495
+model is saved at epoch 18!![08/0019] | train_loss:1.6054 val_acc:46.7728 val_loss:1.4387
+[08/0020] | train_loss:1.6223 val_acc:44.9288 val_loss:1.4732
+[08/0021] | train_loss:1.5962 val_acc:47.9464 val_loss:1.4515
+[08/0022] | train_loss:1.5845 val_acc:48.3655 val_loss:1.4223
+[08/0023] | train_loss:1.5636 val_acc:47.4434 val_loss:1.4534
+[08/0024] | train_loss:1.5844 val_acc:46.5214 val_loss:1.4589
+[08/0025] | train_loss:1.5741 val_acc:47.8625 val_loss:1.414
+[08/0026] | train_loss:1.543 val_acc:47.6949 val_loss:1.4054
+[08/0027] | train_loss:1.544 val_acc:48.6169 val_loss:1.4086
+model is saved at epoch 27!![08/0028] | train_loss:1.5373 val_acc:49.539 val_loss:1.41
+model is saved at epoch 28!![08/0029] | train_loss:1.535 val_acc:47.8625 val_loss:1.394
+[08/0030] | train_loss:1.5448 val_acc:49.036 val_loss:1.4224
+[08/0031] | train_loss:1.5374 val_acc:48.0302 val_loss:1.3842
+[08/0032] | train_loss:1.5235 val_acc:46.9405 val_loss:1.4234
+[08/0033] | train_loss:1.5172 val_acc:47.5272 val_loss:1.4017
+[08/0034] | train_loss:1.5024 val_acc:48.2816 val_loss:1.3991
+[08/0035] | train_loss:1.5104 val_acc:47.7787 val_loss:1.3931
+[08/0036] | train_loss:1.5159 val_acc:48.6169 val_loss:1.4053
+[08/0037] | train_loss:1.5143 val_acc:48.2816 val_loss:1.3932
+[08/0038] | train_loss:1.5051 val_acc:47.3596 val_loss:1.419
+[08/0039] | train_loss:1.5071 val_acc:47.2758 val_loss:1.4056
+[08/0040] | train_loss:1.5036 val_acc:48.0302 val_loss:1.4218
+[08/0041] | train_loss:1.5056 val_acc:48.3655 val_loss:1.3971
+[08/0042] | train_loss:1.5031 val_acc:48.6169 val_loss:1.3743
+[08/0043] | train_loss:1.5076 val_acc:49.036 val_loss:1.3751
+[08/0044] | train_loss:1.503 val_acc:48.2816 val_loss:1.3784
+[08/0045] | train_loss:1.4888 val_acc:48.7846 val_loss:1.3766
+[08/0046] | train_loss:1.4894 val_acc:49.6228 val_loss:1.3663
+model is saved at epoch 46!![08/0047] | train_loss:1.4934 val_acc:49.539 val_loss:1.3745
+[08/0048] | train_loss:1.4964 val_acc:48.2816 val_loss:1.4081
+[08/0049] | train_loss:1.499 val_acc:48.1978 val_loss:1.3694
+[08/0050] | train_loss:1.4761 val_acc:48.4493 val_loss:1.409
+[08/0051] | train_loss:1.4952 val_acc:49.2875 val_loss:1.427
+[08/0052] | train_loss:1.4988 val_acc:48.1978 val_loss:1.3844
+[08/0053] | train_loss:1.4849 val_acc:47.9464 val_loss:1.3716
+[08/0054] | train_loss:1.462 val_acc:49.539 val_loss:1.3673
+[08/0055] | train_loss:1.4676 val_acc:50.3772 val_loss:1.3764
+model is saved at epoch 55!![08/0056] | train_loss:1.485 val_acc:50.6287 val_loss:1.3907
+model is saved at epoch 56!![08/0057] | train_loss:1.472 val_acc:50.964 val_loss:1.3831
+model is saved at epoch 57!![08/0058] | train_loss:1.4799 val_acc:49.539 val_loss:1.3638
+[08/0059] | train_loss:1.4783 val_acc:49.9581 val_loss:1.373
+[08/0060] | train_loss:1.4681 val_acc:49.2037 val_loss:1.3724
+[08/0061] | train_loss:1.4602 val_acc:50.0419 val_loss:1.3751
+[08/0062] | train_loss:1.4613 val_acc:50.3772 val_loss:1.3766
+[08/0063] | train_loss:1.4615 val_acc:49.539 val_loss:1.3633
+[08/0064] | train_loss:1.4626 val_acc:50.1257 val_loss:1.3687
+[08/0065] | train_loss:1.4589 val_acc:50.2096 val_loss:1.365
+[08/0066] | train_loss:1.4536 val_acc:50.0419 val_loss:1.3685
+[08/0067] | train_loss:1.4639 val_acc:49.1199 val_loss:1.3695
+[08/0068] | train_loss:1.4555 val_acc:51.0478 val_loss:1.3549
+model is saved at epoch 68!![08/0069] | train_loss:1.4626 val_acc:50.6287 val_loss:1.3669
+[08/0070] | train_loss:1.4522 val_acc:49.7904 val_loss:1.3903
+[08/0071] | train_loss:1.4571 val_acc:50.2934 val_loss:1.376
+[08/0072] | train_loss:1.4632 val_acc:49.1199 val_loss:1.374
+[08/0073] | train_loss:1.4539 val_acc:51.2154 val_loss:1.3639
+model is saved at epoch 73!![08/0074] | train_loss:1.4458 val_acc:51.2992 val_loss:1.3848
+model is saved at epoch 74!![08/0075] | train_loss:1.4596 val_acc:50.964 val_loss:1.3592
+[08/0076] | train_loss:1.4446 val_acc:49.7904 val_loss:1.3559
+[08/0077] | train_loss:1.4599 val_acc:50.3772 val_loss:1.3596
+[08/0078] | train_loss:1.4522 val_acc:49.4552 val_loss:1.3645
+[08/0079] | train_loss:1.456 val_acc:50.5448 val_loss:1.3658
+[08/0080] | train_loss:1.4427 val_acc:50.2096 val_loss:1.3682
+[08/0081] | train_loss:1.441 val_acc:48.2816 val_loss:1.3513
+[08/0082] | train_loss:1.4486 val_acc:49.1199 val_loss:1.3707
+[08/0083] | train_loss:1.4424 val_acc:50.5448 val_loss:1.3674
+[08/0084] | train_loss:1.4331 val_acc:49.9581 val_loss:1.3541
+[08/0085] | train_loss:1.4414 val_acc:48.5331 val_loss:1.3685
+[08/0086] | train_loss:1.4444 val_acc:48.2816 val_loss:1.382
+[08/0087] | train_loss:1.441 val_acc:50.964 val_loss:1.3434
+[08/0088] | train_loss:1.4327 val_acc:51.0478 val_loss:1.3625
+[08/0089] | train_loss:1.4277 val_acc:50.3772 val_loss:1.3659
+[08/0090] | train_loss:1.4421 val_acc:50.0419 val_loss:1.3456
+[08/0091] | train_loss:1.4364 val_acc:50.7125 val_loss:1.3485
+[08/0092] | train_loss:1.4303 val_acc:50.7963 val_loss:1.3674
+[08/0093] | train_loss:1.4271 val_acc:51.6345 val_loss:1.3746
+model is saved at epoch 93!![08/0094] | train_loss:1.4254 val_acc:50.2096 val_loss:1.3572
+[08/0095] | train_loss:1.4337 val_acc:48.8684 val_loss:1.36
+[08/0096] | train_loss:1.4182 val_acc:50.3772 val_loss:1.3574
+[08/0097] | train_loss:1.4283 val_acc:51.8022 val_loss:1.362
+model is saved at epoch 97!![08/0098] | train_loss:1.4253 val_acc:50.7963 val_loss:1.3669
+[08/0099] | train_loss:1.4076 val_acc:49.1199 val_loss:1.3612
+[08/0100] | train_loss:1.4245 val_acc:49.6228 val_loss:1.3505
+[08/0101] | train_loss:1.4418 val_acc:48.9522 val_loss:1.3701
+[08/0102] | train_loss:1.4303 val_acc:48.9522 val_loss:1.3772
+[08/0103] | train_loss:1.4096 val_acc:50.8801 val_loss:1.3443
+[08/0104] | train_loss:1.4112 val_acc:51.2154 val_loss:1.3468
+[08/0105] | train_loss:1.4156 val_acc:50.3772 val_loss:1.3596
+[08/0106] | train_loss:1.4248 val_acc:50.2096 val_loss:1.3399
+[08/0107] | train_loss:1.4153 val_acc:49.3713 val_loss:1.3722
+[08/0108] | train_loss:1.4254 val_acc:51.4669 val_loss:1.3561
+[08/0109] | train_loss:1.41 val_acc:49.2875 val_loss:1.352
+[08/0110] | train_loss:1.4163 val_acc:51.2154 val_loss:1.3381
+[08/0111] | train_loss:1.4152 val_acc:50.2934 val_loss:1.3516
+[08/0112] | train_loss:1.4074 val_acc:50.2934 val_loss:1.3636
+[08/0113] | train_loss:1.4168 val_acc:50.3772 val_loss:1.3445
+[08/0114] | train_loss:1.4 val_acc:50.461 val_loss:1.3452
+[08/0115] | train_loss:1.4073 val_acc:50.1257 val_loss:1.3432
+[08/0116] | train_loss:1.4104 val_acc:50.7963 val_loss:1.3403
+[08/0117] | train_loss:1.3982 val_acc:51.4669 val_loss:1.3472
+[08/0118] | train_loss:1.4144 val_acc:51.2154 val_loss:1.3557
+[08/0119] | train_loss:1.4199 val_acc:50.2934 val_loss:1.3512
+[08/0120] | train_loss:1.4134 val_acc:50.7125 val_loss:1.3562
+[08/0121] | train_loss:1.3975 val_acc:50.2934 val_loss:1.3654
+[08/0122] | train_loss:1.4155 val_acc:50.5448 val_loss:1.365
+[08/0123] | train_loss:1.4055 val_acc:50.964 val_loss:1.3511
+[08/0124] | train_loss:1.4061 val_acc:50.6287 val_loss:1.3545
+[08/0125] | train_loss:1.4033 val_acc:49.8743 val_loss:1.3481
+[08/0126] | train_loss:1.4024 val_acc:51.0478 val_loss:1.3574
+[08/0127] | train_loss:1.4004 val_acc:51.2992 val_loss:1.3549
+[08/0128] | train_loss:1.3991 val_acc:48.6169 val_loss:1.3693
+[08/0129] | train_loss:1.393 val_acc:50.461 val_loss:1.3701
+[08/0130] | train_loss:1.4204 val_acc:50.964 val_loss:1.3661
+[08/0131] | train_loss:1.3993 val_acc:49.2037 val_loss:1.3461
+[08/0132] | train_loss:1.4032 val_acc:50.964 val_loss:1.3407
+[08/0133] | train_loss:1.4147 val_acc:51.6345 val_loss:1.3448
+[08/0134] | train_loss:1.3947 val_acc:50.6287 val_loss:1.35
+[08/0135] | train_loss:1.3916 val_acc:51.2992 val_loss:1.3538
+[08/0136] | train_loss:1.3898 val_acc:50.964 val_loss:1.3452
+[08/0137] | train_loss:1.3849 val_acc:50.3772 val_loss:1.3521
+[08/0138] | train_loss:1.3805 val_acc:49.3713 val_loss:1.3413
+[08/0139] | train_loss:1.3739 val_acc:50.3772 val_loss:1.3585
+[08/0140] | train_loss:1.3782 val_acc:51.0478 val_loss:1.3582
+[08/0141] | train_loss:1.3774 val_acc:51.1316 val_loss:1.3335
+[08/0142] | train_loss:1.3812 val_acc:50.7125 val_loss:1.3586
+[08/0143] | train_loss:1.3952 val_acc:50.2934 val_loss:1.3511
+[08/0144] | train_loss:1.3862 val_acc:51.2154 val_loss:1.3571
+[08/0145] | train_loss:1.3729 val_acc:50.964 val_loss:1.3269
+[08/0146] | train_loss:1.3746 val_acc:49.8743 val_loss:1.3383
+[08/0147] | train_loss:1.3671 val_acc:52.3889 val_loss:1.3485
+model is saved at epoch 147!![08/0148] | train_loss:1.3779 val_acc:49.8743 val_loss:1.3655
+[08/0149] | train_loss:1.3728 val_acc:50.8801 val_loss:1.3412
+[08/0150] | train_loss:1.3609 val_acc:50.0419 val_loss:1.3698
+[08/0151] | train_loss:1.3727 val_acc:50.964 val_loss:1.3376
+[08/0152] | train_loss:1.3637 val_acc:50.8801 val_loss:1.3376
+[08/0153] | train_loss:1.3721 val_acc:50.964 val_loss:1.3688
+[08/0154] | train_loss:1.3742 val_acc:51.8022 val_loss:1.3445
+[08/0155] | train_loss:1.371 val_acc:50.964 val_loss:1.3682
+[08/0156] | train_loss:1.3649 val_acc:51.1316 val_loss:1.3577
+[08/0157] | train_loss:1.3768 val_acc:50.2096 val_loss:1.3458
+[08/0158] | train_loss:1.3676 val_acc:50.3772 val_loss:1.3615
+[08/0159] | train_loss:1.3505 val_acc:51.8022 val_loss:1.3349
+[08/0160] | train_loss:1.3639 val_acc:51.4669 val_loss:1.3417
+[08/0161] | train_loss:1.3651 val_acc:49.1199 val_loss:1.3821
+[08/0162] | train_loss:1.3746 val_acc:51.5507 val_loss:1.3433
+[08/0163] | train_loss:1.3517 val_acc:51.7184 val_loss:1.3281
+[08/0164] | train_loss:1.3485 val_acc:51.2992 val_loss:1.3434
+[08/0165] | train_loss:1.3563 val_acc:51.2992 val_loss:1.348
+[08/0166] | train_loss:1.3552 val_acc:51.0478 val_loss:1.3488
+[08/0167] | train_loss:1.3676 val_acc:50.7963 val_loss:1.3576
+[08/0168] | train_loss:1.3442 val_acc:51.0478 val_loss:1.3559
+[08/0169] | train_loss:1.3608 val_acc:50.461 val_loss:1.3789
+[08/0170] | train_loss:1.3659 val_acc:50.6287 val_loss:1.3483
+[08/0171] | train_loss:1.3542 val_acc:51.9698 val_loss:1.3395
+[08/0172] | train_loss:1.3661 val_acc:50.1257 val_loss:1.3575
+[08/0173] | train_loss:1.3597 val_acc:51.8022 val_loss:1.332
+[08/0174] | train_loss:1.3424 val_acc:51.8022 val_loss:1.3458
+[08/0175] | train_loss:1.3495 val_acc:51.0478 val_loss:1.3412
+[08/0176] | train_loss:1.3356 val_acc:52.2213 val_loss:1.3442
+[08/0177] | train_loss:1.349 val_acc:50.5448 val_loss:1.3609
+[08/0178] | train_loss:1.3491 val_acc:49.539 val_loss:1.3672
+[08/0179] | train_loss:1.3513 val_acc:50.2934 val_loss:1.3617
+[08/0180] | train_loss:1.3456 val_acc:51.0478 val_loss:1.3421
+[08/0181] | train_loss:1.3452 val_acc:50.7963 val_loss:1.3482
+[08/0182] | train_loss:1.3427 val_acc:50.5448 val_loss:1.3483
+[08/0183] | train_loss:1.331 val_acc:51.3831 val_loss:1.3419
+[08/0184] | train_loss:1.3353 val_acc:50.8801 val_loss:1.3489
+[08/0185] | train_loss:1.3448 val_acc:50.5448 val_loss:1.3564
+[08/0186] | train_loss:1.3433 val_acc:50.0419 val_loss:1.3621
+[08/0187] | train_loss:1.3403 val_acc:50.8801 val_loss:1.35
+[08/0188] | train_loss:1.3327 val_acc:51.5507 val_loss:1.3507
+[08/0189] | train_loss:1.3382 val_acc:51.7184 val_loss:1.3487
+[08/0190] | train_loss:1.3399 val_acc:50.2934 val_loss:1.3521
+[08/0191] | train_loss:1.3373 val_acc:52.3051 val_loss:1.3554
+[08/0192] | train_loss:1.3315 val_acc:51.886 val_loss:1.3406
+[08/0193] | train_loss:1.3281 val_acc:51.5507 val_loss:1.3381
+[08/0194] | train_loss:1.3237 val_acc:52.1375 val_loss:1.36
+[08/0195] | train_loss:1.3212 val_acc:50.6287 val_loss:1.3508
+[08/0196] | train_loss:1.3289 val_acc:50.6287 val_loss:1.3401
+[08/0197] | train_loss:1.3301 val_acc:50.964 val_loss:1.3482
+[08/0198] | train_loss:1.3296 val_acc:51.2154 val_loss:1.3665
+Fold: [8/10] Test is finish !! 
+ Test Metrics are: test_acc:49.7904 test_loss:1.3422fold [8/10] is start!!
+[09/0001] | train_loss:2.2169 val_acc:19.8659 val_loss:2.2595
+model is saved at epoch 1!![09/0002] | train_loss:2.0272 val_acc:29.0025 val_loss:1.9165
+model is saved at epoch 2!![09/0003] | train_loss:1.9563 val_acc:32.9422 val_loss:1.8155
+model is saved at epoch 3!![09/0004] | train_loss:1.9121 val_acc:34.3671 val_loss:1.7857
+model is saved at epoch 4!![09/0005] | train_loss:1.8676 val_acc:35.8759 val_loss:1.7293
+model is saved at epoch 5!![09/0006] | train_loss:1.8322 val_acc:39.4803 val_loss:1.6936
+model is saved at epoch 6!![09/0007] | train_loss:1.8005 val_acc:39.6479 val_loss:1.6518
+model is saved at epoch 7!![09/0008] | train_loss:1.7707 val_acc:40.8215 val_loss:1.5957
+model is saved at epoch 8!![09/0009] | train_loss:1.7388 val_acc:41.4082 val_loss:1.5992
+model is saved at epoch 9!![09/0010] | train_loss:1.7395 val_acc:41.5759 val_loss:1.5848
+model is saved at epoch 10!![09/0011] | train_loss:1.7266 val_acc:42.3303 val_loss:1.5544
+model is saved at epoch 11!![09/0012] | train_loss:1.6942 val_acc:44.342 val_loss:1.5118
+model is saved at epoch 12!![09/0013] | train_loss:1.705 val_acc:43.0847 val_loss:1.5741
+[09/0014] | train_loss:1.6921 val_acc:44.342 val_loss:1.5044
+[09/0015] | train_loss:1.6768 val_acc:43.3361 val_loss:1.5351
+[09/0016] | train_loss:1.6802 val_acc:42.917 val_loss:1.5514
+[09/0017] | train_loss:1.6761 val_acc:41.4082 val_loss:1.5622
+[09/0018] | train_loss:1.6674 val_acc:45.0126 val_loss:1.5334
+model is saved at epoch 18!![09/0019] | train_loss:1.6558 val_acc:44.7611 val_loss:1.4764
+[09/0020] | train_loss:1.6507 val_acc:45.264 val_loss:1.5032
+model is saved at epoch 20!![09/0021] | train_loss:1.646 val_acc:44.5096 val_loss:1.4531
+[09/0022] | train_loss:1.6348 val_acc:45.6832 val_loss:1.4724
+model is saved at epoch 22!![09/0023] | train_loss:1.6115 val_acc:46.6052 val_loss:1.4443
+model is saved at epoch 23!![09/0024] | train_loss:1.6286 val_acc:44.9288 val_loss:1.4492
+[09/0025] | train_loss:1.6093 val_acc:45.4317 val_loss:1.4508
+[09/0026] | train_loss:1.6191 val_acc:44.5096 val_loss:1.4791
+[09/0027] | train_loss:1.6093 val_acc:43.9229 val_loss:1.4762
+[09/0028] | train_loss:1.6146 val_acc:45.5993 val_loss:1.4545
+[09/0029] | train_loss:1.6121 val_acc:46.3537 val_loss:1.4598
+[09/0030] | train_loss:1.6133 val_acc:46.1023 val_loss:1.4361
+[09/0031] | train_loss:1.6061 val_acc:47.9464 val_loss:1.4392
+model is saved at epoch 31!![09/0032] | train_loss:1.5868 val_acc:46.7728 val_loss:1.4166
+[09/0033] | train_loss:1.5926 val_acc:47.1081 val_loss:1.4482
+[09/0034] | train_loss:1.5978 val_acc:44.4258 val_loss:1.4576
+[09/0035] | train_loss:1.5907 val_acc:45.9346 val_loss:1.463
+[09/0036] | train_loss:1.5897 val_acc:46.2699 val_loss:1.4431
+[09/0037] | train_loss:1.5808 val_acc:47.2758 val_loss:1.4266
+[09/0038] | train_loss:1.5733 val_acc:47.5272 val_loss:1.4063
+[09/0039] | train_loss:1.5785 val_acc:47.6949 val_loss:1.4183
+[09/0040] | train_loss:1.5816 val_acc:44.5935 val_loss:1.4621
+[09/0041] | train_loss:1.5764 val_acc:46.6052 val_loss:1.4314
+[09/0042] | train_loss:1.5736 val_acc:48.1978 val_loss:1.4477
+model is saved at epoch 42!![09/0043] | train_loss:1.5634 val_acc:46.3537 val_loss:1.4229
+[09/0044] | train_loss:1.5877 val_acc:46.4376 val_loss:1.4215
+[09/0045] | train_loss:1.5677 val_acc:45.5155 val_loss:1.4523
+[09/0046] | train_loss:1.5633 val_acc:47.1081 val_loss:1.4014
+[09/0047] | train_loss:1.5673 val_acc:47.6111 val_loss:1.4183
+[09/0048] | train_loss:1.574 val_acc:47.3596 val_loss:1.4265
+[09/0049] | train_loss:1.5583 val_acc:47.2758 val_loss:1.417
+[09/0050] | train_loss:1.5771 val_acc:48.7008 val_loss:1.3986
+model is saved at epoch 50!![09/0051] | train_loss:1.545 val_acc:47.3596 val_loss:1.4164
+[09/0052] | train_loss:1.5451 val_acc:48.2816 val_loss:1.4323
+[09/0053] | train_loss:1.552 val_acc:47.9464 val_loss:1.3754
+[09/0054] | train_loss:1.5503 val_acc:47.1081 val_loss:1.4356
+[09/0055] | train_loss:1.531 val_acc:47.6949 val_loss:1.4288
+[09/0056] | train_loss:1.5301 val_acc:47.4434 val_loss:1.4102
+[09/0057] | train_loss:1.5547 val_acc:49.3713 val_loss:1.3886
+model is saved at epoch 57!![09/0058] | train_loss:1.5421 val_acc:48.5331 val_loss:1.3945
+[09/0059] | train_loss:1.543 val_acc:48.7008 val_loss:1.3903
+[09/0060] | train_loss:1.5321 val_acc:48.0302 val_loss:1.4141
+[09/0061] | train_loss:1.5433 val_acc:47.3596 val_loss:1.3973
+[09/0062] | train_loss:1.5327 val_acc:47.7787 val_loss:1.4032
+[09/0063] | train_loss:1.5291 val_acc:48.3655 val_loss:1.3974
+[09/0064] | train_loss:1.5368 val_acc:49.4552 val_loss:1.3829
+model is saved at epoch 64!![09/0065] | train_loss:1.5226 val_acc:48.1978 val_loss:1.3936
+[09/0066] | train_loss:1.5245 val_acc:49.6228 val_loss:1.3641
+model is saved at epoch 66!![09/0067] | train_loss:1.5386 val_acc:47.7787 val_loss:1.4161
+[09/0068] | train_loss:1.5237 val_acc:47.8625 val_loss:1.3901
+[09/0069] | train_loss:1.5092 val_acc:47.5272 val_loss:1.4123
+[09/0070] | train_loss:1.5137 val_acc:47.2758 val_loss:1.4183
+[09/0071] | train_loss:1.5148 val_acc:48.0302 val_loss:1.4016
+[09/0072] | train_loss:1.5168 val_acc:49.8743 val_loss:1.3643
+model is saved at epoch 72!![09/0073] | train_loss:1.5055 val_acc:48.6169 val_loss:1.3712
+[09/0074] | train_loss:1.5313 val_acc:48.114 val_loss:1.3863
+[09/0075] | train_loss:1.5004 val_acc:49.6228 val_loss:1.3721
+[09/0076] | train_loss:1.5084 val_acc:49.7066 val_loss:1.3894
+[09/0077] | train_loss:1.4985 val_acc:47.3596 val_loss:1.3954
+[09/0078] | train_loss:1.505 val_acc:49.2037 val_loss:1.3738
+[09/0079] | train_loss:1.5129 val_acc:47.6949 val_loss:1.3909
+[09/0080] | train_loss:1.4959 val_acc:49.036 val_loss:1.3956
+[09/0081] | train_loss:1.5051 val_acc:47.8625 val_loss:1.4054
+[09/0082] | train_loss:1.5049 val_acc:49.4552 val_loss:1.389
+[09/0083] | train_loss:1.5043 val_acc:48.2816 val_loss:1.3953
+[09/0084] | train_loss:1.5007 val_acc:49.7904 val_loss:1.3869
+[09/0085] | train_loss:1.5036 val_acc:48.5331 val_loss:1.388
+[09/0086] | train_loss:1.5055 val_acc:49.2037 val_loss:1.3751
+[09/0087] | train_loss:1.4956 val_acc:49.7066 val_loss:1.3678
+[09/0088] | train_loss:1.4889 val_acc:48.1978 val_loss:1.3909
+[09/0089] | train_loss:1.5039 val_acc:46.8567 val_loss:1.4493
+[09/0090] | train_loss:1.4956 val_acc:48.3655 val_loss:1.4099
+[09/0091] | train_loss:1.4727 val_acc:49.2037 val_loss:1.381
+[09/0092] | train_loss:1.4976 val_acc:49.3713 val_loss:1.3973
+[09/0093] | train_loss:1.4771 val_acc:49.9581 val_loss:1.3588
+model is saved at epoch 93!![09/0094] | train_loss:1.4856 val_acc:48.7008 val_loss:1.4132
+[09/0095] | train_loss:1.4863 val_acc:49.7066 val_loss:1.3865
+[09/0096] | train_loss:1.485 val_acc:49.2875 val_loss:1.3903
+[09/0097] | train_loss:1.4752 val_acc:49.7066 val_loss:1.3659
+[09/0098] | train_loss:1.4641 val_acc:48.3655 val_loss:1.4002
+[09/0099] | train_loss:1.473 val_acc:50.461 val_loss:1.3605
+model is saved at epoch 99!![09/0100] | train_loss:1.4861 val_acc:51.0478 val_loss:1.3773
+model is saved at epoch 100!![09/0101] | train_loss:1.4668 val_acc:49.2037 val_loss:1.3887
+[09/0102] | train_loss:1.4751 val_acc:50.2096 val_loss:1.3653
+[09/0103] | train_loss:1.4684 val_acc:51.0478 val_loss:1.3753
+[09/0104] | train_loss:1.4723 val_acc:48.8684 val_loss:1.3788
+[09/0105] | train_loss:1.4745 val_acc:48.5331 val_loss:1.408
+[09/0106] | train_loss:1.4678 val_acc:49.2875 val_loss:1.3934
+[09/0107] | train_loss:1.481 val_acc:48.7008 val_loss:1.3809
+[09/0108] | train_loss:1.4521 val_acc:49.3713 val_loss:1.3661
+[09/0109] | train_loss:1.4528 val_acc:49.9581 val_loss:1.3994
+[09/0110] | train_loss:1.4569 val_acc:48.114 val_loss:1.4334
+[09/0111] | train_loss:1.4685 val_acc:50.2934 val_loss:1.3542
+[09/0112] | train_loss:1.4617 val_acc:48.7846 val_loss:1.3773
+[09/0113] | train_loss:1.4625 val_acc:50.461 val_loss:1.3608
+[09/0114] | train_loss:1.4545 val_acc:49.7904 val_loss:1.3744
+[09/0115] | train_loss:1.4545 val_acc:50.0419 val_loss:1.3729
+[09/0116] | train_loss:1.4557 val_acc:49.9581 val_loss:1.3694
+[09/0117] | train_loss:1.4403 val_acc:50.0419 val_loss:1.372
+[09/0118] | train_loss:1.4516 val_acc:48.4493 val_loss:1.411
+[09/0119] | train_loss:1.467 val_acc:49.6228 val_loss:1.3651
+[09/0120] | train_loss:1.4626 val_acc:49.4552 val_loss:1.3745
+[09/0121] | train_loss:1.4403 val_acc:48.4493 val_loss:1.4005
+[09/0122] | train_loss:1.4481 val_acc:50.6287 val_loss:1.3582
+[09/0123] | train_loss:1.4382 val_acc:49.2875 val_loss:1.3843
+[09/0124] | train_loss:1.436 val_acc:50.6287 val_loss:1.3776
+[09/0125] | train_loss:1.4392 val_acc:49.2875 val_loss:1.3665
+[09/0126] | train_loss:1.4448 val_acc:47.8625 val_loss:1.3899
+[09/0127] | train_loss:1.4493 val_acc:50.461 val_loss:1.3801
+[09/0128] | train_loss:1.4424 val_acc:49.7904 val_loss:1.3814
+[09/0129] | train_loss:1.4455 val_acc:49.036 val_loss:1.382
+[09/0130] | train_loss:1.4283 val_acc:49.3713 val_loss:1.3718
+[09/0131] | train_loss:1.4323 val_acc:48.6169 val_loss:1.3766
+[09/0132] | train_loss:1.4393 val_acc:49.2037 val_loss:1.365
+[09/0133] | train_loss:1.4318 val_acc:48.2816 val_loss:1.3597
+[09/0134] | train_loss:1.4279 val_acc:48.6169 val_loss:1.3953
+[09/0135] | train_loss:1.4322 val_acc:49.2875 val_loss:1.3775
+[09/0136] | train_loss:1.4347 val_acc:49.2037 val_loss:1.3693
+[09/0137] | train_loss:1.431 val_acc:50.6287 val_loss:1.3683
+[09/0138] | train_loss:1.4385 val_acc:49.1199 val_loss:1.4084
+[09/0139] | train_loss:1.4242 val_acc:50.2096 val_loss:1.3844
+[09/0140] | train_loss:1.4291 val_acc:49.539 val_loss:1.3744
+[09/0141] | train_loss:1.4259 val_acc:49.1199 val_loss:1.3826
+[09/0142] | train_loss:1.4212 val_acc:50.3772 val_loss:1.3568
+[09/0143] | train_loss:1.4245 val_acc:50.6287 val_loss:1.36
+[09/0144] | train_loss:1.4239 val_acc:50.8801 val_loss:1.359
+[09/0145] | train_loss:1.4249 val_acc:49.8743 val_loss:1.3796
+[09/0146] | train_loss:1.4212 val_acc:49.036 val_loss:1.3768
+[09/0147] | train_loss:1.4241 val_acc:50.0419 val_loss:1.3752
+[09/0148] | train_loss:1.4072 val_acc:50.2096 val_loss:1.37
+[09/0149] | train_loss:1.4214 val_acc:47.7787 val_loss:1.3944
+[09/0150] | train_loss:1.4123 val_acc:49.539 val_loss:1.3845
+[09/0151] | train_loss:1.4307 val_acc:50.0419 val_loss:1.3593
+Fold: [9/10] Test is finish !! 
+ Test Metrics are: test_acc:50.0419 test_loss:1.4118fold [9/10] is start!!
+[10/0001] | train_loss:2.1717 val_acc:21.71 val_loss:2.2706
+model is saved at epoch 1!![10/0002] | train_loss:1.9804 val_acc:29.5054 val_loss:1.9555
+model is saved at epoch 2!![10/0003] | train_loss:1.9263 val_acc:34.5348 val_loss:1.7622
+model is saved at epoch 3!![10/0004] | train_loss:1.883 val_acc:34.0319 val_loss:1.7499
+[10/0005] | train_loss:1.8479 val_acc:37.2171 val_loss:1.6811
+model is saved at epoch 5!![10/0006] | train_loss:1.8225 val_acc:38.5583 val_loss:1.6575
+model is saved at epoch 6!![10/0007] | train_loss:1.7866 val_acc:40.57 val_loss:1.6179
+model is saved at epoch 7!![10/0008] | train_loss:1.765 val_acc:39.7318 val_loss:1.6249
+[10/0009] | train_loss:1.7332 val_acc:39.6479 val_loss:1.6034
+[10/0010] | train_loss:1.7064 val_acc:42.7494 val_loss:1.5534
+model is saved at epoch 10!![10/0011] | train_loss:1.6866 val_acc:40.4023 val_loss:1.6224
+[10/0012] | train_loss:1.6669 val_acc:45.0126 val_loss:1.5076
+model is saved at epoch 12!![10/0013] | train_loss:1.6621 val_acc:45.1802 val_loss:1.5158
+model is saved at epoch 13!![10/0014] | train_loss:1.6316 val_acc:45.1802 val_loss:1.4811
+[10/0015] | train_loss:1.6437 val_acc:44.5935 val_loss:1.5147
+[10/0016] | train_loss:1.6296 val_acc:46.1861 val_loss:1.4838
+model is saved at epoch 16!![10/0017] | train_loss:1.6158 val_acc:45.9346 val_loss:1.4647
+[10/0018] | train_loss:1.6144 val_acc:46.2699 val_loss:1.4622
+model is saved at epoch 18!![10/0019] | train_loss:1.6016 val_acc:47.192 val_loss:1.4611
+model is saved at epoch 19!![10/0020] | train_loss:1.6029 val_acc:45.6832 val_loss:1.4651
+[10/0021] | train_loss:1.5866 val_acc:45.0964 val_loss:1.479
+[10/0022] | train_loss:1.587 val_acc:46.3537 val_loss:1.4574
+[10/0023] | train_loss:1.5895 val_acc:46.7728 val_loss:1.4356
+[10/0024] | train_loss:1.5708 val_acc:46.1023 val_loss:1.4445
+[10/0025] | train_loss:1.5719 val_acc:46.3537 val_loss:1.4434
+[10/0026] | train_loss:1.5601 val_acc:47.0243 val_loss:1.4441
+[10/0027] | train_loss:1.5626 val_acc:44.6773 val_loss:1.4682
+[10/0028] | train_loss:1.5602 val_acc:47.7787 val_loss:1.4221
+model is saved at epoch 28!![10/0029] | train_loss:1.5641 val_acc:47.1081 val_loss:1.4334
+[10/0030] | train_loss:1.5584 val_acc:45.8508 val_loss:1.4569
+[10/0031] | train_loss:1.554 val_acc:48.6169 val_loss:1.447
+model is saved at epoch 31!![10/0032] | train_loss:1.5622 val_acc:47.3596 val_loss:1.4213
+[10/0033] | train_loss:1.5671 val_acc:44.7611 val_loss:1.4537
+[10/0034] | train_loss:1.5585 val_acc:47.2758 val_loss:1.4419
+[10/0035] | train_loss:1.5331 val_acc:47.8625 val_loss:1.4097
+[10/0036] | train_loss:1.5351 val_acc:46.3537 val_loss:1.4486
+[10/0037] | train_loss:1.5249 val_acc:48.114 val_loss:1.4046
+[10/0038] | train_loss:1.5415 val_acc:46.4376 val_loss:1.4168
+[10/0039] | train_loss:1.5408 val_acc:48.114 val_loss:1.4131
+[10/0040] | train_loss:1.5355 val_acc:46.9405 val_loss:1.4384
+[10/0041] | train_loss:1.524 val_acc:46.689 val_loss:1.4504
+[10/0042] | train_loss:1.5325 val_acc:46.3537 val_loss:1.4769
+[10/0043] | train_loss:1.5396 val_acc:47.7787 val_loss:1.4112
+[10/0044] | train_loss:1.5218 val_acc:46.9405 val_loss:1.4504
+[10/0045] | train_loss:1.5122 val_acc:47.7787 val_loss:1.4015
+[10/0046] | train_loss:1.5266 val_acc:47.4434 val_loss:1.4202
+[10/0047] | train_loss:1.5239 val_acc:46.8567 val_loss:1.4312
+[10/0048] | train_loss:1.5161 val_acc:46.6052 val_loss:1.4179
+[10/0049] | train_loss:1.5229 val_acc:46.8567 val_loss:1.4195
+[10/0050] | train_loss:1.5119 val_acc:46.6052 val_loss:1.4191
+[10/0051] | train_loss:1.5241 val_acc:47.2758 val_loss:1.4221
+[10/0052] | train_loss:1.5169 val_acc:47.6949 val_loss:1.4077
+[10/0053] | train_loss:1.5144 val_acc:47.4434 val_loss:1.4082
+[10/0054] | train_loss:1.5121 val_acc:47.4434 val_loss:1.4204
+[10/0055] | train_loss:1.5098 val_acc:46.9405 val_loss:1.4401
+[10/0056] | train_loss:1.5211 val_acc:47.0243 val_loss:1.4201
+[10/0057] | train_loss:1.4978 val_acc:49.036 val_loss:1.3961
+model is saved at epoch 57!![10/0058] | train_loss:1.5089 val_acc:47.8625 val_loss:1.4175
+[10/0059] | train_loss:1.4993 val_acc:48.2816 val_loss:1.3932
+[10/0060] | train_loss:1.5148 val_acc:48.0302 val_loss:1.4022
+[10/0061] | train_loss:1.51 val_acc:47.9464 val_loss:1.4188
+[10/0062] | train_loss:1.5029 val_acc:45.9346 val_loss:1.4308
+[10/0063] | train_loss:1.5084 val_acc:47.3596 val_loss:1.4392
+[10/0064] | train_loss:1.5003 val_acc:47.9464 val_loss:1.4298
+[10/0065] | train_loss:1.4955 val_acc:48.0302 val_loss:1.4096
+[10/0066] | train_loss:1.4899 val_acc:47.5272 val_loss:1.4515
+[10/0067] | train_loss:1.506 val_acc:46.6052 val_loss:1.4448
+[10/0068] | train_loss:1.4996 val_acc:48.114 val_loss:1.417
+[10/0069] | train_loss:1.4993 val_acc:47.4434 val_loss:1.3974
+[10/0070] | train_loss:1.4845 val_acc:48.1978 val_loss:1.3946
+[10/0071] | train_loss:1.5003 val_acc:47.3596 val_loss:1.4081
+[10/0072] | train_loss:1.4943 val_acc:49.2875 val_loss:1.4101
+model is saved at epoch 72!![10/0073] | train_loss:1.4884 val_acc:49.3713 val_loss:1.4086
+model is saved at epoch 73!![10/0074] | train_loss:1.4801 val_acc:46.8567 val_loss:1.4216
+[10/0075] | train_loss:1.4799 val_acc:47.4434 val_loss:1.4196
+[10/0076] | train_loss:1.4935 val_acc:48.3655 val_loss:1.398
+[10/0077] | train_loss:1.4895 val_acc:46.689 val_loss:1.4059
+[10/0078] | train_loss:1.4677 val_acc:48.114 val_loss:1.3902
+[10/0079] | train_loss:1.4863 val_acc:46.9405 val_loss:1.4136
+[10/0080] | train_loss:1.4773 val_acc:46.6052 val_loss:1.4129
+[10/0081] | train_loss:1.4777 val_acc:47.6111 val_loss:1.4291
+[10/0082] | train_loss:1.4883 val_acc:48.9522 val_loss:1.4012
+[10/0083] | train_loss:1.4805 val_acc:48.2816 val_loss:1.4429
+[10/0084] | train_loss:1.4724 val_acc:47.6111 val_loss:1.4127
+[10/0085] | train_loss:1.4868 val_acc:47.9464 val_loss:1.425
+[10/0086] | train_loss:1.4761 val_acc:47.6111 val_loss:1.3886
+[10/0087] | train_loss:1.4747 val_acc:46.7728 val_loss:1.4123
+[10/0088] | train_loss:1.4769 val_acc:47.6111 val_loss:1.4063
+[10/0089] | train_loss:1.4807 val_acc:49.1199 val_loss:1.4014
+[10/0090] | train_loss:1.4791 val_acc:47.9464 val_loss:1.3986
+[10/0091] | train_loss:1.4697 val_acc:47.7787 val_loss:1.3972
+[10/0092] | train_loss:1.4746 val_acc:47.2758 val_loss:1.4131
+[10/0093] | train_loss:1.4669 val_acc:47.0243 val_loss:1.4046
+[10/0094] | train_loss:1.4647 val_acc:47.6111 val_loss:1.3948
+[10/0095] | train_loss:1.4691 val_acc:47.192 val_loss:1.413
+[10/0096] | train_loss:1.4689 val_acc:48.1978 val_loss:1.4074
+[10/0097] | train_loss:1.4641 val_acc:48.114 val_loss:1.3937
+[10/0098] | train_loss:1.4632 val_acc:48.3655 val_loss:1.3992
+[10/0099] | train_loss:1.4616 val_acc:46.9405 val_loss:1.4095
+[10/0100] | train_loss:1.4553 val_acc:47.3596 val_loss:1.4007
+[10/0101] | train_loss:1.463 val_acc:48.9522 val_loss:1.4031
+[10/0102] | train_loss:1.4573 val_acc:46.6052 val_loss:1.4068
+[10/0103] | train_loss:1.4426 val_acc:47.6949 val_loss:1.4142
+[10/0104] | train_loss:1.4579 val_acc:47.8625 val_loss:1.3951
+[10/0105] | train_loss:1.4594 val_acc:48.5331 val_loss:1.3876
+[10/0106] | train_loss:1.4515 val_acc:48.1978 val_loss:1.3955
+[10/0107] | train_loss:1.453 val_acc:47.6949 val_loss:1.3904
+[10/0108] | train_loss:1.4614 val_acc:47.7787 val_loss:1.3814
+[10/0109] | train_loss:1.4538 val_acc:47.6111 val_loss:1.4055
+[10/0110] | train_loss:1.4618 val_acc:49.2037 val_loss:1.3833
+[10/0111] | train_loss:1.4544 val_acc:48.114 val_loss:1.3948
+[10/0112] | train_loss:1.4524 val_acc:48.3655 val_loss:1.3875
+[10/0113] | train_loss:1.4613 val_acc:47.6111 val_loss:1.3895
+[10/0114] | train_loss:1.453 val_acc:49.2037 val_loss:1.4013
+[10/0115] | train_loss:1.4338 val_acc:48.6169 val_loss:1.4149
+[10/0116] | train_loss:1.4454 val_acc:48.7846 val_loss:1.4012
+[10/0117] | train_loss:1.4535 val_acc:48.8684 val_loss:1.3932
+[10/0118] | train_loss:1.4481 val_acc:46.8567 val_loss:1.4115
+[10/0119] | train_loss:1.4541 val_acc:46.7728 val_loss:1.3855
+[10/0120] | train_loss:1.4385 val_acc:48.1978 val_loss:1.3895
+[10/0121] | train_loss:1.4382 val_acc:49.036 val_loss:1.3779
+[10/0122] | train_loss:1.4385 val_acc:48.3655 val_loss:1.4016
+[10/0123] | train_loss:1.4449 val_acc:48.9522 val_loss:1.4198
+[10/0124] | train_loss:1.4405 val_acc:47.7787 val_loss:1.3799
+Fold: [10/10] Test is finish !! 
+ Test Metrics are: test_acc:46.5604 test_loss:1.4533
+all fold acc is: 
+[50.88013410568237, 49.79044497013092, 49.62280094623566, 49.20368790626526, 50.62866806983948, 47.86253273487091, 52.388936281204224, 49.79044497013092, 50.041913986206055, 46.56040370464325] 
+Test is finish !! 
+ Test Metrics are: acc_mean:49.677 acc_std:1.5198
