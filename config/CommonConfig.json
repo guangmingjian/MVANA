@@ -1,0 +1,37 @@
+{
+    "train_config": {
+        "kf" : 10,
+        "epochs": 300,
+        "batch_size": 256,
+        "seed": 8971,
+        "patience" : 50,
+        "lr" : 5e-4,
+        "weight_decay": 1e-5
+    },
+
+    "model": "MVANA",
+    "dataset": "NCI1",
+    "data_dir" : "datasets/",
+    "out_dir": "out/",
+
+     "net_params": {
+       "alpha": 0,
+       "beta": 5e-3,
+       "gcn_nums": 2,
+       "dropout": 0.2,
+       "d_kv": 32,
+       "gcn_dropout": 0.0,
+       "att_drop_ratio": 0.0,
+       "mask_rate": 0.5,
+       "graph_norm": true,
+       "sz_c": 4,
+       "gcn_h_dim": 128,
+       "g_name": "GraphSAGE",
+       "cnn_out_ker": 18,
+        "hidden_kernel": 16,
+        "cnn_dropout": 0.0,
+        "is_cbn": false,
+        "is_em": false,
+        "MFeatype": "TFM"
+     }
+}
